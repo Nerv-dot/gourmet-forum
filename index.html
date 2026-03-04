@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум гурманов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍴 Форум гурманов</a>
+            <nav class="nav">
+                <a href="index.html">Главная</a>
+                <a href="profile.html">Профиль</a>
+                <span id="userStatus" style="color: #e67e22; font-weight: bold;">Гость</span>
+                <a href="login.html">Вход</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Разделы форума</h1>
+        
+        <div class="card">
+            <h2>🍲 Рецепты</h2>
+            <p>Делимся проверенными рецептами, спрашиваем советы, обсуждаем ингредиенты.</p>
+            <small>Тем: 15 • Сообщений: 42</small>
+            <br>
+            <a href="topics.html" class="btn" style="margin-top: 10px;">Перейти</a>
+        </div>
+
+        <div class="card">
+            <h2>🍷 Рестораны и кафе</h2>
+            <p>Обсуждаем заведения, делимся впечатлениями, советуем друг другу.</p>
+            <small>Тем: 8 • Сообщений: 23</small>
+            <br>
+            <a href="topics.html" class="btn" style="margin-top: 10px;">Перейти</a>
+        </div>
+
+        <div class="card">
+            <h2>🥘 Кулинарные вопросы</h2>
+            <p>Почему не получился соус? Чем заменить редкий ингредиент? Спрашивайте!</p>
+            <small>Тем: 23 • Сообщений: 67</small>
+            <br>
+            <a href="topics.html" class="btn" style="margin-top: 10px;">Перейти</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Форум гурманов. Просто о вкусном.</p>
+        </div>
+    </footer>
+    <!-- Модальное окно входа/регистрации -->
+    <div id="welcomeModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 30px; border-radius: 10px; max-width: 400px; width: 90%; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+            
+            <!-- Заголовок -->
+            <h2 style="text-align: center; margin-bottom: 20px; color: #e67e22;">🍴 Добро пожаловать!</h2>
+            
+            <!-- Кнопки выбора -->
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <a href="login.html" class="btn" style="text-align: center;">Войти / Зарегистрироваться</a>
+                <button id="guestButton" class="btn-secondary" style="width: 100%;">Продолжить как гость</button>
+            </div>
+            
+            <!-- Маленький текст -->
+            <p style="text-align: center; margin-top: 20px; font-size: 12px; color: #7f8c8d;">
+                Гости могут читать форум, но не могут писать сообщения и ставить лайки.
+            </p>
+            
+            <!-- Кнопка закрытия -->
+            <button id="closeModal" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #95a5a6;">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        // Показываем модальное окно при загрузке страницы
+        window.addEventListener('load', function() {
+            // Проверяем, не закрывал ли пользователь окно раньше (сохраняем в localStorage)
+            const modalClosed = localStorage.getItem('welcomeModalClosed');
+            
+            // Если не закрывал и не авторизован (тут простая проверка, для демо)
+            if (!modalClosed && !document.cookie.includes('user_logged_in')) {
+                document.getElementById('welcomeModal').style.display = 'block';
+            }
+        });
+
+        // Закрыть окно (для гостя)
+        document.getElementById('guestButton').addEventListener('click', function() {
+            document.getElementById('welcomeModal').style.display = 'none';
+            // Сохраняем, что пользователь выбрал "гость" и больше не показываем окно
+            localStorage.setItem('welcomeModalClosed', 'guest');
+        });
+
+        // Закрыть окно (крестик)
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('welcomeModal').style.display = 'none';
+            localStorage.setItem('welcomeModalClosed', 'closed');
+        });
+
+        // Если кликнуть вне окна - закрыть (по желанию)
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('welcomeModal');
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                localStorage.setItem('welcomeModalClosed', 'closed');
+            }
+        });
+        // Показываем статус пользователя
+        const userStatus = document.getElementById('userStatus');
+        const authLink = document.getElementById('authLink');
+
+        // Проверяем localStorage
+        const guestMode = localStorage.getItem('welcomeModalClosed');
+
+        if (guestMode === 'guest') {
+            userStatus.textContent = '👤 Гость';
+            authLink.textContent = 'Войти';
+            authLink.href = 'login.html';
+        } else if (document.cookie.includes('user_logged_in')) {
+            userStatus.textContent = '👤 Елена_повар';
+            authLink.textContent = 'Выйти';
+            authLink.href = '#';
+        } else {
+            userStatus.textContent = '👤 Гость';
+            authLink.textContent = 'Вход';
+            authLink.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

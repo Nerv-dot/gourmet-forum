@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новая тема - Форум гурманов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍴 Форум гурманов</a>
+            <nav class="nav">
+                <a href="index.html">Главная</a>
+                <a href="profile.html">Профиль</a>
+                <a href="login.html">Вход</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Создать новую тему</h1>
+
+        <div class="card">
+            <form>
+                <div class="form-group">
+                    <label for="title">Заголовок</label>
+                    <input type="text" id="title" class="form-control" placeholder="Например: Бабушкин рецепт борща">
+                </div>
+
+                <div class="form-group">
+                    <label for="section">Раздел</label>
+                    <select id="section" class="form-control">
+                        <option>Рецепты</option>
+                        <option>Рестораны и кафе</option>
+                        <option>Кулинарные вопросы</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Содержание</label>
+                    <textarea id="content" class="form-control" rows="10" placeholder="Опишите рецепт, задайте вопрос или поделитесь впечатлениями..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Фото (по желанию)</label>
+                    <input type="file" id="photo" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn">Опубликовать</button>
+                <a href="topics.html" class="btn-secondary" style="margin-left: 10px;">Отмена</a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Форум гурманов. Просто о вкусном.</p>
+        </div>
+    </footer>
+</body>
+</html>

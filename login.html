@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Форум гурманов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍴 Форум гурманов</a>
+            <nav class="nav">
+                <a href="index.html">Главная</a>
+                <a href="profile.html">Профиль</a>
+                <a href="login.html">Вход</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="max-width: 400px; margin: 40px auto;">
+            <h1 style="text-align: center;">Добро пожаловать!</h1>
+
+            <!-- Вкладки переключения Вход / Регистрация -->
+            <div style="display: flex; margin-bottom: 20px; border-bottom: 2px solid #eee;">
+                <a href="#" id="loginTab" style="flex: 1; text-align: center; padding: 10px; background: #e67e22; color: #fff; text-decoration: none; border-radius: 5px 5px 0 0;">Вход</a>
+                <a href="#" id="registerTab" style="flex: 1; text-align: center; padding: 10px; background: #f0f0f0; color: #2c3e50; text-decoration: none; border-radius: 5px 5px 0 0;">Регистрация</a>
+            </div>
+
+            <!-- Форма входа (показываем по умолчанию) -->
+            <div id="loginForm" class="card">
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email или логин</label>
+                        <input type="text" id="login-email" class="form-control" placeholder="example@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" class="form-control" placeholder="••••••••">
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">Войти</button>
+                </form>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="#" style="color: #7f8c8d; font-size: 14px;">Забыли пароль?</a>
+                </div>
+            </div>
+
+            <!-- Форма регистрации (скрыта) -->
+            <div id="registerForm" class="card" style="display: none;">
+                <form>
+                    <div class="form-group">
+                        <label for="reg-name">Имя пользователя</label>
+                        <input type="text" id="reg-name" class="form-control" placeholder="Например: Елена_повар">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" class="form-control" placeholder="example@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password">Пароль</label>
+                        <input type="password" id="reg-password" class="form-control" placeholder="••••••••">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password2">Повторите пароль</label>
+                        <input type="password" id="reg-password2" class="form-control" placeholder="••••••••">
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">Зарегистрироваться</button>
+                </form>
+
+                <div style="text-align: center; margin-top: 20px; font-size: 14px; color: #7f8c8d;">
+                    Регистрируясь, вы соглашаетесь с правилами форума.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Форум гурманов. Просто о вкусном.</p>
+        </div>
+    </footer>
+
+    <!-- Простой скрипт для переключения форм -->
+    <script>
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        loginTab.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Переключаем табы
+            loginTab.style.background = '#e67e22';
+            loginTab.style.color = '#fff';
+            registerTab.style.background = '#f0f0f0';
+            registerTab.style.color = '#2c3e50';
+            // Переключаем формы
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
+
+        registerTab.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Переключаем табы
+            registerTab.style.background = '#e67e22';
+            registerTab.style.color = '#fff';
+            loginTab.style.background = '#f0f0f0';
+            loginTab.style.color = '#2c3e50';
+            // Переключаем формы
+            registerForm.style.display = 'block';
+            loginForm.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

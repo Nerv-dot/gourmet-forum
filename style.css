@@ -1,0 +1,249 @@
+/* Базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f5f0;  /* теплый светлый фон */
+    color: #2c3e50;  /* темно-сине-серый для текста */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 20px 0;
+    border-bottom: 3px solid #e67e22;  /* оранжевая полоска — "вкусный" акцент */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e67e22;
+    text-decoration: none;
+}
+
+.nav a {
+    margin-left: 20px;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: #e67e22;
+}
+
+/* Карточки для разделов и тем */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+h1 {
+    font-size: 32px;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    background: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #d35400;
+}
+
+.btn-secondary {
+    background: #95a5a6;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+/* Формы */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Комментарии */
+.comment {
+    background: #f9f9f9;
+    border-left: 3px solid #e67e22;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 5px 5px 0;
+}
+
+.comment-meta {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+/* Рейтинги и лайки */
+.likes {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+/* Подвал */
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav a {
+        margin: 0 10px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .card {
+        padding: 12px;
+    }
+    
+    /* Карточки тем на мобильных */
+    .card > div {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .card > div > div:last-child {
+        text-align: left;
+        display: flex;
+        gap: 15px;
+    }
+    
+    /* Шапка профиля на мобильных */
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-stats {
+        justify-content: center;
+    }
+    
+    /* Кнопки */
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+        margin-left: 0 !important;
+    }
+    
+    /* Пагинация */
+    .pagination {
+        flex-wrap: wrap;
+    }
+    
+    /* Формы */
+    .form-control {
+        font-size: 16px; /* чтобы не зумилось на айфонах */
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+    .nav a {
+        margin: 5px;
+        font-size: 14px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бабушкина пицца - Форум гурманов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍴 Форум гурманов</a>
+            <nav class="nav">
+                <a href="index.html">Главная</a>
+                <a href="profile.html">Профиль</a>
+                <a href="login.html">Вход</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Хлебные крошки -->
+        <div style="margin-bottom: 20px; color: #7f8c8d;">
+            <a href="index.html" style="color: #7f8c8d;">Главная</a> / 
+            <a href="topics.html" style="color: #7f8c8d;">Рецепты</a> / 
+            <span>Бабушкина пицца на тонком тесте</span>
+        </div>
+
+        <!-- Пост -->
+        <div class="card">
+            <h2>🍕 Бабушкина пицца на тонком тесте</h2>
+            <div style="display: flex; justify-content: space-between; color: #7f8c8d; margin-bottom: 20px;">
+                <span>Автор: Елена_повар • 2 дня назад</span>
+                <span class="likes">❤️ 24 лайка</span>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <h3>Ингредиенты:</h3>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Мука - 300 г</li>
+                    <li>Вода теплая - 180 мл</li>
+                    <li>Оливковое масло - 2 ст.л.</li>
+                    <li>Соль - 1 ч.л.</li>
+                    <li>Сахар - 1 ч.л.</li>
+                    <li>Дрожжи сухие - 5 г</li>
+                </ul>
+
+                <h3>Приготовление:</h3>
+                <p>1. Смешайте муку, соль, сахар и дрожжи.</p>
+                <p>2. Добавьте теплую воду и масло, замесите тесто.</p>
+                <p>3. Оставьте на 1 час в теплом месте.</p>
+                <p>4. Раскатайте тонко, выложите начинку.</p>
+                <p>5. Выпекайте 15 минут при 220°C.</p>
+            </div>
+
+            <button class="btn-secondary">❤️ Поставить лайк</button>
+        </div>
+
+        <!-- Комментарии -->
+        <h3 style="margin: 30px 0 20px;">Комментарии (12)</h3>
+
+        <div class="comment">
+            <div class="comment-meta">
+                <strong>Антон_шеф</strong> • вчера в 15:23
+            </div>
+            <p>Спасибо за рецепт! Тесто действительно получилось очень тонким и хрустящим. Добавил еще щепотку итальянских трав — получилось бомбически!</p>
+            <div style="margin-top: 10px;">
+                <span class="likes">❤️ 5</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-meta">
+                <strong>Мама_Оля</strong> • вчера в 18:40
+            </div>
+            <p>А можно ли заменить обычную муку на цельнозерновую? Кто-нибудь пробовал?</p>
+            <div style="margin-top: 10px;">
+                <span class="likes">❤️ 2</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-meta">
+                <strong>Елена_повар</strong> • вчера в 19:15
+            </div>
+            <p>Мама_Оля, пробовала. Получается плотнее и менее хрустящее. Лучше смешать 50/50 с обычной мукой.</p>
+            <div style="margin-top: 10px;">
+                <span class="likes">❤️ 8</span>
+            </div>
+        </div>
+
+        <!-- Форма добавления комментария -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Добавить комментарий</h3>
+            <form>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Напишите ваш комментарий..."></textarea>
+                </div>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Форум гурманов. Просто о вкусном.</p>
+        </div>
+    </footer>
+</body>
+</html>
