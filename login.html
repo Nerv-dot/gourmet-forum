@@ -84,7 +84,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Форум гурманов. Просто о вкусном.</p>
+            <p>&copy; 2026 Форум гурманов. Просто о вкусном.</p>
         </div>
     </footer>
 
@@ -95,28 +95,80 @@
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
 
+        // Получаем параметры из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tabParam = urlParams.get('tab');
+
+        // Если в URL есть параметр tab=register, переключаем на регистрацию
+        if (tabParam === 'register') {
+            // Небольшая задержка, чтобы DOM точно загрузился
+            setTimeout(() => {
+                // Активируем вкладку регистрации
+                registerTab.style.background = '#e67e22';
+                registerTab.style.color = '#fff';
+                loginTab.style.background = '#f0f0f0';
+                loginTab.style.color = '#2c3e50';
+                registerForm.style.display = 'block';
+                loginForm.style.display = 'none';
+            }, 100);
+        }
+
+        // Переключение табов
         loginTab.addEventListener('click', function(e) {
             e.preventDefault();
-            // Переключаем табы
             loginTab.style.background = '#e67e22';
             loginTab.style.color = '#fff';
             registerTab.style.background = '#f0f0f0';
             registerTab.style.color = '#2c3e50';
-            // Переключаем формы
             loginForm.style.display = 'block';
             registerForm.style.display = 'none';
         });
 
         registerTab.addEventListener('click', function(e) {
             e.preventDefault();
-            // Переключаем табы
             registerTab.style.background = '#e67e22';
             registerTab.style.color = '#fff';
             loginTab.style.background = '#f0f0f0';
             loginTab.style.color = '#2c3e50';
-            // Переключаем формы
             registerForm.style.display = 'block';
             loginForm.style.display = 'none';
+        });
+
+        // Обработка формы входа
+        document.querySelector('#loginForm form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (email && password) {
+                alert('Добро пожаловать! (демо-режим)');
+                // Здесь будет реальная авторизация
+                window.location.href = 'index.html';
+            } else {
+                alert('Заполните все поля');
+            }
+        });
+
+        // Обработка формы регистрации
+        document.querySelector('#registerForm form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const password2 = document.getElementById('reg-password2').value;
+            
+            if (!name || !email || !password || !password2) {
+                alert('Заполните все поля');
+                return;
+            }
+            
+            if (password !== password2) {
+                alert('Пароли не совпадают');
+                return;
+            }
+            
+            alert('Регистрация успешна! (демо-режим)');
+            window.location.href = 'index.html';
         });
     </script>
 </body>

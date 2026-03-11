@@ -1,0 +1,8 @@
+<h1>Все теги</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    {% for tag in tags %}
+    <a href="tag.html?id={{ tag.id }}" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
+        #{{ tag.name }} ({{ tag.posts_count }})
+    </a>
+    {% endfor %}
+</div>

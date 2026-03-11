@@ -12,96 +12,237 @@
             <a href="index.html" class="logo">🍴 Форум гурманов</a>
             <nav class="nav">
                 <a href="index.html">Главная</a>
+                <a href="tags.html">Теги</a>
                 <a href="profile.html">Профиль</a>
-                <a href="login.html">Вход</a>
+                <span id="userStatus" style="color: #e67e22; font-weight: bold;">Елена_повар</span>
+                <a href="login.html" id="authLink">Выйти</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
         <!-- Шапка профиля -->
-        <div style="display: flex; align-items: center; gap: 30px; margin-bottom: 30px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <!-- Аватар (заглушка) -->
-            <div style="width: 100px; height: 100px; background: #e67e22; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 40px;">
+        <div class="profile-header">
+            <div class="avatar">
                 Е
             </div>
             
-            <div>
-                <h1 style="margin-bottom: 5px; border-bottom: none;">Елена_повар</h1>
-                <p style="color: #7f8c8d; margin-bottom: 10px;">На форуме с марта 2024</p>
-                <p>🍳 Люблю экспериментировать на кухне. Особенно удаются пицца и паста. Делюсь только проверенными рецептами!</p>
-                <div style="display: flex; gap: 20px; margin-top: 15px;">
-                    <span>❤️ Получено лайков: <strong>156</strong></span>
-                    <span>📝 Тем: <strong>12</strong></span>
-                    <span>💬 Комментариев: <strong>48</strong></span>
+            <div class="profile-info">
+                <h1>Елена_повар</h1>
+                <p class="meta">На форуме с 15 марта 2024</p>
+                <p class="bio">🍳 Люблю экспериментировать на кухне. Особенно удаются пицца и паста. Делюсь только проверенными рецептами!</p>
+                
+                <!-- Статистика из БД -->
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">156</span> лайков получено
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">12</span> постов
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">48</span> комментариев
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Вкладки (для переключения между постами и комментариями) -->
-        <div style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px;">
-            <a href="#" style="padding: 8px 16px; background: #e67e22; color: #fff; border-radius: 5px; text-decoration: none;">Темы</a>
-            <a href="#" style="padding: 8px 16px; background: #f0f0f0; color: #2c3e50; border-radius: 5px; text-decoration: none;">Комментарии</a>
+        <!-- Вкладки профиля -->
+        <div class="profile-tabs">
+            <a href="#" class="tab active">📝 Посты</a>
+            <a href="#" class="tab">💬 Комментарии</a>
+            <a href="#" class="tab">❤️ Понравившееся</a>
+            <a href="#" class="tab">⚙️ Настройки</a>
         </div>
 
-        <!-- Список тем пользователя -->
-        <h3>Последние темы</h3>
+        <!-- Содержимое вкладки "Посты" -->
+        <div id="posts-tab">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                <h3>Мои посты</h3>
+                <a href="new_topic.html" class="btn">➕ Новый пост</a>
+            </div>
 
-        <div class="card">
-            <div style="display: flex; justify-content: space-between;">
-                <div>
-                    <a href="topic.html" style="text-decoration: none; color: #2c3e50;">
-                        <h4 style="margin-bottom: 5px;">🍕 Бабушкина пицца на тонком тесте</h4>
-                    </a>
-                    <p style="color: #7f8c8d; font-size: 14px;">в разделе <a href="topics.html" style="color: #e67e22;">Рецепты</a> • 2 дня назад</p>
+            <!-- Пост 1 - опубликован -->
+            <div class="post-card">
+                <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 10px;">
+                    <div style="flex: 1;">
+                        <h4 style="margin-bottom: 5px;">
+                            <a href="topic.html" style="text-decoration: none; color: #2c3e50;">
+                                🍕 Бабушкина пицца на тонком тесте
+                            </a>
+                        </h4>
+                        <div style="color: #7f8c8d; font-size: 14px; margin-bottom: 8px;">
+                            <span class="status-published">✓ Опубликовано</span> • 2 дня назад
+                        </div>
+                        <p style="margin-bottom: 8px;">Делюсь проверенным рецептом теста, которое всегда получается хрустящим...</p>
+                        
+                        <!-- Теги -->
+                        <div>
+                            <a href="tag.html" class="tag">#пицца</a>
+                            <a href="tag.html" class="tag">#итальянская</a>
+                            <a href="tag.html" class="tag">#тесто</a>
+                        </div>
+                    </div>
+                    <div style="text-align: right; color: #7f8c8d; font-size: 14px;">
+                        <div>💬 12</div>
+                        <div>❤️ 24</div>
+                    </div>
                 </div>
-                <div style="text-align: right; color: #7f8c8d;">
-                    <div>💬 12</div>
-                    <div>❤️ 24</div>
+                <div class="post-meta">
+                    <div>Категория: <a href="topics.html" style="color: #e67e22;">Рецепты</a></div>
+                    <div>
+                        <a href="edit-post.html" style="color: #7f8c8d; margin-right: 15px;">✏️ Редактировать</a>
+                        <a href="#" style="color: #e74c3c;">🗑️ Удалить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Пост 2 - черновик -->
+            <div class="post-card draft">
+                <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 10px;">
+                    <div style="flex: 1;">
+                        <h4 style="margin-bottom: 5px;">
+                            <a href="topic.html" style="text-decoration: none; color: #2c3e50;">
+                                🍣 Домашние роллы: эксперимент
+                            </a>
+                        </h4>
+                        <div style="color: #7f8c8d; font-size: 14px; margin-bottom: 8px;">
+                            <span class="status-draft">✎ Черновик</span> • 3 часа назад
+                        </div>
+                        <p style="margin-bottom: 8px;">Пробую новый рецепт риса для суши. Пока в процессе, скоро допишу...</p>
+                        
+                        <!-- Теги -->
+                        <div>
+                            <a href="tag.html" class="tag">#суши</a>
+                            <a href="tag.html" class="tag">#роллы</a>
+                            <a href="tag.html" class="tag">#японская</a>
+                        </div>
+                    </div>
+                    <div style="text-align: right; color: #7f8c8d; font-size: 14px;">
+                        <div>💬 0</div>
+                        <div>❤️ 0</div>
+                    </div>
+                </div>
+                <div class="post-meta">
+                    <div>Категория: <a href="topics.html" style="color: #e67e22;">Рецепты</a></div>
+                    <div>
+                        <a href="edit-post.html" style="color: #7f8c8d; margin-right: 15px;">✏️ Продолжить</a>
+                        <a href="#" style="color: #e74c3c;">🗑️ Удалить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Пост 3 - опубликован -->
+            <div class="post-card">
+                <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 10px;">
+                    <div style="flex: 1;">
+                        <h4 style="margin-bottom: 5px;">
+                            <a href="topic.html" style="text-decoration: none; color: #2c3e50;">
+                                🥘 Паста карбонара без сливок
+                            </a>
+                        </h4>
+                        <div style="color: #7f8c8d; font-size: 14px; margin-bottom: 8px;">
+                            <span class="status-published">✓ Опубликовано</span> • неделю назад
+                        </div>
+                        <p style="margin-bottom: 8px;">Настоящая итальянская карбонара делается без сливок! Только яйца, сыр, гуанчиале...</p>
+                        
+                        <!-- Теги -->
+                        <div>
+                            <a href="tag.html" class="tag">#паста</a>
+                            <a href="tag.html" class="tag">#карбонара</a>
+                            <a href="tag.html" class="tag">#итальянская</a>
+                        </div>
+                    </div>
+                    <div style="text-align: right; color: #7f8c8d; font-size: 14px;">
+                        <div>💬 31</div>
+                        <div>❤️ 47</div>
+                    </div>
+                </div>
+                <div class="post-meta">
+                    <div>Категория: <a href="topics.html" style="color: #e67e22;">Рецепты</a></div>
+                    <div>
+                        <a href="edit-post.html" style="color: #7f8c8d; margin-right: 15px;">✏️ Редактировать</a>
+                        <a href="#" style="color: #e74c3c;">🗑️ Удалить</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="card">
-            <div style="display: flex; justify-content: space-between;">
-                <div>
-                    <a href="topic.html" style="text-decoration: none; color: #2c3e50;">
-                        <h4 style="margin-bottom: 5px;">🥘 Паста карбонара без сливок</h4>
-                    </a>
-                    <p style="color: #7f8c8d; font-size: 14px;">в разделе <a href="topics.html" style="color: #e67e22;">Рецепты</a> • неделю назад</p>
+        <!-- Содержимое вкладки "Комментарии" (скрыто по умолчанию) -->
+        <div id="comments-tab" style="display: none;">
+            <h3>Мои комментарии</h3>
+            
+            <div class="comment-item">
+                <div class="comment-header">
+                    <span>К посту: <a href="topic.html" class="comment-post-title">🍕 Бабушкина пицца на тонком тесте</a></span>
+                    <span>2 дня назад</span>
                 </div>
-                <div style="text-align: right; color: #7f8c8d;">
-                    <div>💬 8</div>
-                    <div>❤️ 31</div>
+                <p>Спасибо за рецепт! Уже попробовала, получилось очень вкусно. Тесто действительно супер!</p>
+                <div style="margin-top: 10px; display: flex; justify-content: space-between;">
+                    <span class="likes">❤️ 5</span>
+                    <a href="#" style="color: #7f8c8d; font-size: 14px;">✏️ Редактировать</a>
                 </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div style="display: flex; justify-content: space-between;">
-                <div>
-                    <a href="topic.html" style="text-decoration: none; color: #2c3e50;">
-                        <h4 style="margin-bottom: 5px;">❓ Где купить хороший пармезан?</h4>
-                    </a>
-                    <p style="color: #7f8c8d; font-size: 14px;">в разделе <a href="topics.html" style="color: #e67e22;">Кулинарные вопросы</a> • 2 недели назад</p>
+            <div class="comment-item">
+                <div class="comment-header">
+                    <span>К посту: <a href="topic.html" class="comment-post-title">🥗 Греческий салат: секретный ингредиент</a></span>
+                    <span>5 дней назад</span>
                 </div>
-                <div style="text-align: right; color: #7f8c8d;">
-                    <div>💬 15</div>
-                    <div>❤️ 7</div>
+                <p>А какой сыр лучше брать? Обычную фету или есть какой-то особенный?</p>
+                <div style="margin-top: 10px; display: flex; justify-content: space-between;">
+                    <span class="likes">❤️ 2</span>
+                    <a href="#" style="color: #7f8c8d; font-size: 14px;">✏️ Редактировать</a>
                 </div>
             </div>
         </div>
 
         <!-- Кнопка редактирования профиля -->
-        <div style="margin-top: 20px;">
-            <a href="#" class="btn-secondary">✏️ Редактировать профиль</a>
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="#" class="btn-edit">✏️ Редактировать профиль</a>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Форум гурманов. Просто о вкусном.</p>
+            <p>&copy; 2026 Форум гурманов. Просто о вкусном.</p>
         </div>
     </footer>
+
+    <!-- Скрипт для переключения вкладок -->
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const postsTab = document.getElementById('posts-tab');
+        const commentsTab = document.getElementById('comments-tab');
+        
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Убираем active со всех вкладок
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Добавляем active текущей вкладке
+                this.classList.add('active');
+                
+                // Показываем нужный контент
+                if (index === 0) { // Посты
+                    postsTab.style.display = 'block';
+                    commentsTab.style.display = 'none';
+                } else if (index === 1) { // Комментарии
+                    postsTab.style.display = 'none';
+                    commentsTab.style.display = 'block';
+                } else {
+                    // Для остальных вкладок пока просто заглушка
+                    postsTab.style.display = 'none';
+                    commentsTab.style.display = 'none';
+                    alert('Раздел в разработке');
+                    // Возвращаем активность на первую вкладку
+                    tabs[0].classList.add('active');
+                    postsTab.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новая тема - Форум гурманов</title>
+    <title>Новый пост - Форум гурманов</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,51 +12,148 @@
             <a href="index.html" class="logo">🍴 Форум гурманов</a>
             <nav class="nav">
                 <a href="index.html">Главная</a>
+                <a href="tags.html">Теги</a>
                 <a href="profile.html">Профиль</a>
-                <a href="login.html">Вход</a>
+                <span id="userStatus" style="color: #e67e22; font-weight: bold;">Елена_повар</span>
+                <a href="login.html" id="authLink">Выйти</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <h1>Создать новую тему</h1>
+        <!-- Хлебные крошки -->
+        <div style="margin-bottom: 20px; color: #7f8c8d;">
+            <a href="index.html" style="color: #7f8c8d;">Главная</a> / 
+            <a href="profile.html" style="color: #7f8c8d;">Профиль</a> / 
+            <span>Новый пост</span>
+        </div>
+
+        <h1>Создать новый пост</h1>
 
         <div class="card">
             <form>
+                <!-- Заголовок -->
                 <div class="form-group">
-                    <label for="title">Заголовок</label>
-                    <input type="text" id="title" class="form-control" placeholder="Например: Бабушкин рецепт борща">
+                    <label for="title">Заголовок <span style="color: #e67e22;">*</span></label>
+                    <input type="text" id="title" class="form-control" placeholder="Например: Бабушкин рецепт борща" required>
                 </div>
 
+                <!-- Категория -->
                 <div class="form-group">
-                    <label for="section">Раздел</label>
-                    <select id="section" class="form-control">
-                        <option>Рецепты</option>
-                        <option>Рестораны и кафе</option>
-                        <option>Кулинарные вопросы</option>
+                    <label for="category">Категория <span style="color: #e67e22;">*</span></label>
+                    <select id="category" class="form-control" required>
+                        <option value="">-- Выберите категорию --</option>
+                        <option value="1">🍲 Рецепты</option>
+                        <option value="2">🍷 Рестораны и кафе</option>
+                        <option value="3">🥘 Кулинарные вопросы</option>
+                        <option value="4">🥗 Полезное питание</option>
+                        <option value="5">🍰 Десерты и выпечка</option>
                     </select>
                 </div>
 
+                <!-- Содержание -->
                 <div class="form-group">
-                    <label for="content">Содержание</label>
-                    <textarea id="content" class="form-control" rows="10" placeholder="Опишите рецепт, задайте вопрос или поделитесь впечатлениями..."></textarea>
+                    <label for="content">Содержание <span style="color: #e67e22;">*</span></label>
+                    <textarea id="content" class="form-control" rows="12" placeholder="Опишите рецепт, задайте вопрос или поделитесь впечатлениями..." required></textarea>
+                    <div class="hint">Можно использовать обычный текст. Поддерживаются ссылки и эмодзи 😊</div>
                 </div>
 
+                <!-- Теги -->
+                <div class="form-group tags-input">
+                    <label for="tags">Теги</label>
+                    <input type="text" id="tags" class="form-control" placeholder="например: пицца, тесто, итальянская кухня">
+                    <div class="hint">Введите теги через запятую. Они помогут другим найти ваш пост.</div>
+                </div>
+
+                <!-- Примеры тегов -->
+                <div style="margin-bottom: 20px;">
+                    <span style="font-size: 14px; color: #7f8c8d;">Популярные теги:</span>
+                    <a href="#" class="tag" onclick="addTag('#пицца'); return false;">#пицца</a>
+                    <a href="#" class="tag" onclick="addTag('#паста'); return false;">#паста</a>
+                    <a href="#" class="tag" onclick="addTag('#десерт'); return false;">#десерт</a>
+                    <a href="#" class="tag" onclick="addTag('#суп'); return false;">#суп</a>
+                    <a href="#" class="tag" onclick="addTag('#салат'); return false;">#салат</a>
+                    <a href="#" class="tag" onclick="addTag('#завтрак'); return false;">#завтрак</a>
+                </div>
+
+                <!-- Загрузка фото -->
                 <div class="form-group">
                     <label for="photo">Фото (по желанию)</label>
-                    <input type="file" id="photo" accept="image/*">
+                    <input type="file" id="photo" accept="image/*" class="file-input">
+                    <div class="hint">Можно загрузить до 5 фото. Максимальный размер 5 МБ.</div>
                 </div>
 
-                <button type="submit" class="btn">Опубликовать</button>
-                <a href="topics.html" class="btn-secondary" style="margin-left: 10px;">Отмена</a>
+                <!-- Статус -->
+                <div class="form-group">
+                    <label for="status">Статус</label>
+                    <select id="status" class="form-control">
+                        <option value="published">✅ Опубликовать сразу</option>
+                        <option value="draft">📝 Сохранить в черновики</option>
+                    </select>
+                </div>
+
+                <!-- Кнопки -->
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <button type="submit" class="btn">Опубликовать</button>
+                    <button type="submit" class="btn-secondary" onclick="saveDraft(event)">Сохранить черновик</button>
+                    <a href="profile.html" class="btn-secondary" style="background: #95a5a6;">Отмена</a>
+                </div>
             </form>
+        </div>
+
+        <!-- Подсказки по оформлению -->
+        <div class="card" style="background: #f8f5f0;">
+            <h3>📝 Советы по оформлению</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Для рецептов:</strong> указывайте ингредиенты и пошаговые инструкции</li>
+                <li><strong>Для вопросов:</strong> подробно опишите проблему, приложите фото</li>
+                <li><strong>Для отзывов:</strong> укажите название заведения и дату посещения</li>
+                <li><strong>Теги:</strong> используйте 3-5 тегов для лучшей видимости</li>
+            </ul>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Форум гурманов. Просто о вкусном.</p>
+            <p>&copy; 2026 Форум гурманов. Просто о вкусном.</p>
         </div>
     </footer>
+
+    <!-- Скрипт для добавления тегов -->
+    <script>
+        function addTag(tagName) {
+            const tagsInput = document.getElementById('tags');
+            let currentTags = tagsInput.value;
+            
+            // Убираем # из tagName для ввода
+            tagName = tagName.replace('#', '');
+            
+            if (currentTags) {
+                // Проверяем, есть ли уже такой тег
+                const tags = currentTags.split(',').map(t => t.trim());
+                if (!tags.includes(tagName)) {
+                    tagsInput.value = currentTags + ', ' + tagName;
+                }
+            } else {
+                tagsInput.value = tagName;
+            }
+        }
+
+        function saveDraft(event) {
+            event.preventDefault();
+            // Здесь будет логика сохранения черновика
+            alert('Черновик сохранен!');
+            window.location.href = 'profile.html';
+        }
+
+        // Предпросмотр фото (упрощенный)
+        document.getElementById('photo').addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const fileName = this.files[0].name;
+                // Здесь можно показать имя файла или превью
+                console.log('Выбран файл:', fileName);
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+<h1>Посты с тегом #{{ tag.name }}</h1>
+
+{% for post in posts %}
+<div class="card">
+    <h3><a href="topic.html?id={{ post.id }}">{{ post.title }}</a></h3>
+    <p>{{ post.content|truncate(100) }}</p>
+    <div style="color: #7f8c8d;">
+        Автор: {{ post.author.username }} • {{ post.created_at }}
+    </div>
+</div>
+{% endfor %}
