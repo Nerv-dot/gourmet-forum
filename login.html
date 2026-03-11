@@ -58,11 +58,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="reg-email">Email</label>
-                        <input type="email" id="reg-email" class="form-control" placeholder="example@mail.com">
-                    </div>
-
-                    <div class="form-group">
                         <label for="reg-password">Пароль</label>
                         <input type="password" id="reg-password" class="form-control" placeholder="••••••••">
                     </div>
@@ -153,11 +148,10 @@
         document.querySelector('#registerForm form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('reg-name').value;
-            const email = document.getElementById('reg-email').value;
             const password = document.getElementById('reg-password').value;
             const password2 = document.getElementById('reg-password2').value;
             
-            if (!name || !email || !password || !password2) {
+            if (!name || !password || !password2) {
                 alert('Заполните все поля');
                 return;
             }
