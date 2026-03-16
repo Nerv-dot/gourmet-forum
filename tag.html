@@ -1,11 +1,134 @@
-<h1>Посты с тегом #{{ tag.name }}</h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Посты с тегом - Форум гурманов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">🍴 Форум гурманов</a>
+                
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    
+                    <div class="dropdown">
+                        <button class="nav-link dropbtn" id="menuBtn">Меню</button>
+                        <div class="dropdown-content" id="menuDropdown">
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🍲 Рецепты</span>
+                                <a href="topics.html?category=recipes&subcategory=home">Домашняя еда</a>
+                                <a href="topics.html?category=recipes&subcategory=cold">Холодные блюда</a>
+                                <a href="topics.html?category=recipes&subcategory=hot">Горячие блюда</a>
+                                <a href="topics.html?category=recipes&subcategory=desserts">Десерты</a>
+                                <a href="topics.html?category=recipes&subcategory=baking">Выпечка</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🍷 Обсуждения</span>
+                                <a href="topics.html?category=discussions&subcategory=restaurants">Рестораны и кафе</a>
+                                <a href="topics.html?category=discussions&subcategory=products">Продукты</a>
+                                <a href="topics.html?category=discussions&subcategory=kitchen">Кухонная техника</a>
+                                <a href="topics.html?category=discussions&subcategory=events">Гастро-события</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">❓ Вопрос-ответ</span>
+                                <a href="topics.html?category=qa&subcategory=cooking">Приготовление</a>
+                                <a href="topics.html?category=qa&subcategory=ingredients">Ингредиенты</a>
+                                <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
+                                <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="nav-link">О проекте</a>
+                </nav>
+                
+                <div class="auth-section">
+                    <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-{% for post in posts %}
-<div class="card">
-    <h3><a href="topic.html?id={{ post.id }}">{{ post.title }}</a></h3>
-    <p>{{ post.content|truncate(100) }}</p>
-    <div style="color: #7f8c8d;">
-        Автор: {{ post.author.username }} • {{ post.created_at }}
-    </div>
-</div>
-{% endfor %}
+    <main class="container">
+        <h1>Посты с тегом #пицца</h1>
+
+        <div class="card">
+            <h3><a href="topic.html?id=1" style="text-decoration: none; color: #2c3e50;">🍕 Бабушкина пицца на тонком тесте</a></h3>
+            <p>Делюсь проверенным рецептом теста, которое всегда получается хрустящим...</p>
+            <div style="color: #7f8c8d;">
+                Автор: Елена_повар • 2 дня назад
+            </div>
+        </div>
+
+        <div class="card">
+            <h3><a href="topic.html?id=6" style="text-decoration: none; color: #2c3e50;">🍕 Маргарита за 15 минут</a></h3>
+            <p>Быстрый рецепт пиццы для тех, у кого мало времени...</p>
+            <div style="color: #7f8c8d;">
+                Автор: FastCook • 5 дней назад
+            </div>
+        </div>
+
+        <div class="card">
+            <h3><a href="topic.html?id=7" style="text-decoration: none; color: #2c3e50;">🍕 Четыре сыра: идеальное сочетание</a></h3>
+            <p>Как подобрать сыры для настоящей пиццы четыре сыра...</p>
+            <div style="color: #7f8c8d;">
+                Автор: CheeseLover • неделю назад
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Форум гурманов. Просто о вкусном.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Выпадающее меню по клику
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const menuDropdown = document.getElementById('menuDropdown');
+            
+            if (menuBtn && menuDropdown) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    menuDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+                        menuDropdown.classList.remove('show');
+                    }
+                });
+                
+                menuDropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+
+        // Обновление кнопки авторизации
+        function updateAuthButton() {
+            const authBtn = document.getElementById('authBtn');
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const username = localStorage.getItem('username') || 'Елена_повар';
+
+            if (isLoggedIn) {
+                authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
+                authBtn.href = 'profile.html';
+                authBtn.classList.add('user-profile-btn');
+            } else {
+                authBtn.innerHTML = 'Вход';
+                authBtn.href = 'login.html';
+                authBtn.classList.remove('user-profile-btn');
+            }
+        }
+
+        updateAuthButton();
+    </script>
+</body>
+</html>

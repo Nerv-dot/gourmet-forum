@@ -9,12 +9,47 @@
 <body>
     <header>
         <div class="container">
-            <a href="index.html" class="logo">🍴 Форум гурманов</a>
-            <nav class="nav">
-                <a href="index.html">Главная</a>
-                <a href="profile.html">Профиль</a>
-                <a href="login.html">Вход</a>
-            </nav>
+            <div class="header-content">
+                <a href="index.html" class="logo">🍴 Форум гурманов</a>
+                
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    
+                    <div class="dropdown">
+                        <button class="nav-link dropbtn" id="menuBtn">Меню</button>
+                        <div class="dropdown-content" id="menuDropdown">
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🍲 Рецепты</span>
+                                <a href="topics.html?category=recipes&subcategory=home">Домашняя еда</a>
+                                <a href="topics.html?category=recipes&subcategory=cold">Холодные блюда</a>
+                                <a href="topics.html?category=recipes&subcategory=hot">Горячие блюда</a>
+                                <a href="topics.html?category=recipes&subcategory=desserts">Десерты</a>
+                                <a href="topics.html?category=recipes&subcategory=baking">Выпечка</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🍷 Обсуждения</span>
+                                <a href="topics.html?category=discussions&subcategory=restaurants">Рестораны и кафе</a>
+                                <a href="topics.html?category=discussions&subcategory=products">Продукты</a>
+                                <a href="topics.html?category=discussions&subcategory=kitchen">Кухонная техника</a>
+                                <a href="topics.html?category=discussions&subcategory=events">Гастро-события</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">❓ Вопрос-ответ</span>
+                                <a href="topics.html?category=qa&subcategory=cooking">Приготовление</a>
+                                <a href="topics.html?category=qa&subcategory=ingredients">Ингредиенты</a>
+                                <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
+                                <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="nav-link">О проекте</a>
+                </nav>
+                
+                <div class="auth-section">
+                    <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -22,54 +57,44 @@
         <div style="max-width: 400px; margin: 40px auto;">
             <h1 style="text-align: center;">Добро пожаловать!</h1>
 
-            <!-- Вкладки переключения Вход / Регистрация -->
             <div style="display: flex; margin-bottom: 20px; border-bottom: 2px solid #eee;">
                 <a href="#" id="loginTab" style="flex: 1; text-align: center; padding: 10px; background: #e67e22; color: #fff; text-decoration: none; border-radius: 5px 5px 0 0;">Вход</a>
                 <a href="#" id="registerTab" style="flex: 1; text-align: center; padding: 10px; background: #f0f0f0; color: #2c3e50; text-decoration: none; border-radius: 5px 5px 0 0;">Регистрация</a>
             </div>
 
-            <!-- Форма входа (показываем по умолчанию) -->
             <div id="loginForm" class="card">
-                <form>
+                <form id="loginFormElement">
                     <div class="form-group">
                         <label for="login-email">Email или логин</label>
-                        <input type="text" id="login-email" class="form-control" placeholder="example@mail.com">
+                        <input type="text" id="login-email" class="form-control" placeholder="example@mail.com" required>
                     </div>
-
                     <div class="form-group">
                         <label for="login-password">Пароль</label>
-                        <input type="password" id="login-password" class="form-control" placeholder="••••••••">
+                        <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                     </div>
-
                     <button type="submit" class="btn" style="width: 100%;">Войти</button>
                 </form>
-
                 <div style="text-align: center; margin-top: 20px;">
                     <a href="#" style="color: #7f8c8d; font-size: 14px;">Забыли пароль?</a>
                 </div>
             </div>
 
-            <!-- Форма регистрации (скрыта) -->
             <div id="registerForm" class="card" style="display: none;">
-                <form>
+                <form id="registerFormElement">
                     <div class="form-group">
                         <label for="reg-name">Имя пользователя</label>
-                        <input type="text" id="reg-name" class="form-control" placeholder="Например: Елена_повар">
+                        <input type="text" id="reg-name" class="form-control" placeholder="Например: Елена_повар" required>
                     </div>
-
                     <div class="form-group">
                         <label for="reg-password">Пароль</label>
-                        <input type="password" id="reg-password" class="form-control" placeholder="••••••••">
+                        <input type="password" id="reg-password" class="form-control" placeholder="••••••••" required>
                     </div>
-
                     <div class="form-group">
                         <label for="reg-password2">Повторите пароль</label>
-                        <input type="password" id="reg-password2" class="form-control" placeholder="••••••••">
+                        <input type="password" id="reg-password2" class="form-control" placeholder="••••••••" required>
                     </div>
-
                     <button type="submit" class="btn" style="width: 100%;">Зарегистрироваться</button>
                 </form>
-
                 <div style="text-align: center; margin-top: 20px; font-size: 14px; color: #7f8c8d;">
                     Регистрируясь, вы соглашаетесь с правилами форума.
                 </div>
@@ -83,22 +108,41 @@
         </div>
     </footer>
 
-    <!-- Простой скрипт для переключения форм -->
     <script>
+        // Выпадающее меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const menuDropdown = document.getElementById('menuDropdown');
+            
+            if (menuBtn && menuDropdown) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    menuDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+                        menuDropdown.classList.remove('show');
+                    }
+                });
+                
+                menuDropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+
+        // Переключение вкладок
         const loginTab = document.getElementById('loginTab');
         const registerTab = document.getElementById('registerTab');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
 
-        // Получаем параметры из URL
         const urlParams = new URLSearchParams(window.location.search);
         const tabParam = urlParams.get('tab');
 
-        // Если в URL есть параметр tab=register, переключаем на регистрацию
         if (tabParam === 'register') {
-            // Небольшая задержка, чтобы DOM точно загрузился
             setTimeout(() => {
-                // Активируем вкладку регистрации
                 registerTab.style.background = '#e67e22';
                 registerTab.style.color = '#fff';
                 loginTab.style.background = '#f0f0f0';
@@ -108,7 +152,6 @@
             }, 100);
         }
 
-        // Переключение табов
         loginTab.addEventListener('click', function(e) {
             e.preventDefault();
             loginTab.style.background = '#e67e22';
@@ -129,23 +172,24 @@
             loginForm.style.display = 'none';
         });
 
-        // Обработка формы входа
-        document.querySelector('#loginForm form').addEventListener('submit', function(e) {
+        // Обработка входа
+        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
             
             if (email && password) {
-                alert('Добро пожаловать! (демо-режим)');
-                // Здесь будет реальная авторизация
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('username', email.split('@')[0] || 'Пользователь');
+                alert('Добро пожаловать!');
                 window.location.href = 'index.html';
             } else {
                 alert('Заполните все поля');
             }
         });
 
-        // Обработка формы регистрации
-        document.querySelector('#registerForm form').addEventListener('submit', function(e) {
+        // Обработка регистрации
+        document.getElementById('registerFormElement').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('reg-name').value;
             const password = document.getElementById('reg-password').value;
@@ -161,9 +205,30 @@
                 return;
             }
             
-            alert('Регистрация успешна! (демо-режим)');
+            localStorage.setItem('userLoggedIn', 'true');
+            localStorage.setItem('username', name);
+            alert('Регистрация успешна!');
             window.location.href = 'index.html';
         });
+
+        // Обновление кнопки авторизации
+        function updateAuthButton() {
+            const authBtn = document.getElementById('authBtn');
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const username = localStorage.getItem('username') || 'Елена_повар';
+
+            if (isLoggedIn) {
+                authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
+                authBtn.href = 'profile.html';
+                authBtn.classList.add('user-profile-btn');
+            } else {
+                authBtn.innerHTML = 'Вход';
+                authBtn.href = 'login.html';
+                authBtn.classList.remove('user-profile-btn');
+            }
+        }
+
+        updateAuthButton();
     </script>
 </body>
 </html>

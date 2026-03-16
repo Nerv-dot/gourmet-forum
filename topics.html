@@ -9,14 +9,47 @@
 <body>
     <header>
         <div class="container">
-            <a href="index.html" class="logo">🍴 Форум гурманов</a>
-            <nav class="nav">
-                <a href="index.html">Главная</a>
-                <a href="tags.html">Теги</a>
-                <a href="profile.html">Профиль</a>
-                <span id="userStatus" style="color: #e67e22; font-weight: bold;">Гость</span>
-                <a href="login.html" id="authLink">Вход</a>
-            </nav>
+            <div class="header-content">
+                <a href="index.html" class="logo">🍴 Форум гурманов</a>
+                
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    
+                    <div class="dropdown">
+                        <button class="nav-link dropbtn" id="menuBtn">Меню</button>
+                        <div class="dropdown-content" id="menuDropdown">
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🍲 Рецепты</span>
+                                <a href="topics.html?category=recipes&subcategory=home">Домашняя еда</a>
+                                <a href="topics.html?category=recipes&subcategory=cold">Холодные блюда</a>
+                                <a href="topics.html?category=recipes&subcategory=hot">Горячие блюда</a>
+                                <a href="topics.html?category=recipes&subcategory=desserts">Десерты</a>
+                                <a href="topics.html?category=recipes&subcategory=baking">Выпечка</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🍷 Обсуждения</span>
+                                <a href="topics.html?category=discussions&subcategory=restaurants">Рестораны и кафе</a>
+                                <a href="topics.html?category=discussions&subcategory=products">Продукты</a>
+                                <a href="topics.html?category=discussions&subcategory=kitchen">Кухонная техника</a>
+                                <a href="topics.html?category=discussions&subcategory=events">Гастро-события</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">❓ Вопрос-ответ</span>
+                                <a href="topics.html?category=qa&subcategory=cooking">Приготовление</a>
+                                <a href="topics.html?category=qa&subcategory=ingredients">Ингредиенты</a>
+                                <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
+                                <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="nav-link">О проекте</a>
+                </nav>
+                
+                <div class="auth-section">
+                    <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -48,23 +81,23 @@
         </div>
 
         <!-- Сортировка и фильтры -->
-        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-            <a href="#" class="btn-secondary" style="background: #e67e22; color: white;" id="sortNew">Сначала новые</a>
-            <a href="#" class="btn-secondary" id="sortPopular">Популярные</a>
-            <a href="#" class="btn-secondary" id="sortLikes">По лайкам</a>
-            <a href="#" class="btn-secondary" id="sortComments">По комментариям</a>
+        <div class="sort-buttons">
+            <a href="#" class="sort-btn active" id="sortNew">Сначала новые</a>
+            <a href="#" class="sort-btn" id="sortPopular">Популярные</a>
+            <a href="#" class="sort-btn" id="sortLikes">По лайкам</a>
+            <a href="#" class="sort-btn" id="sortComments">По комментариям</a>
         </div>
 
         <!-- Фильтр по статусу (для авторизованных) -->
-        <div style="display: flex; gap: 15px; margin-bottom: 20px; padding: 10px; background: #fff; border-radius: 5px; align-items: center; flex-wrap: wrap;">
-            <span style="color: #7f8c8d;">Показать:</span>
-            <label style="display: flex; align-items: center; gap: 5px;">
+        <div class="status-filter">
+            <span class="filter-label">Показать:</span>
+            <label class="filter-radio">
                 <input type="radio" name="status" value="all" checked> Все
             </label>
-            <label style="display: flex; align-items: center; gap: 5px;">
+            <label class="filter-radio">
                 <input type="radio" name="status" value="published"> Только опубликованные
             </label>
-            <label style="display: flex; align-items: center; gap: 5px;">
+            <label class="filter-radio">
                 <input type="radio" name="status" value="draft"> Черновики (мои)
             </label>
         </div>
@@ -75,7 +108,7 @@
         </div>
 
         <!-- Пагинация -->
-        <div id="pagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px; flex-wrap: wrap;">
+        <div class="pagination" id="pagination">
             <!-- Пагинация будет формироваться скриптом -->
         </div>
     </main>
@@ -86,25 +119,24 @@
         </div>
     </footer>
 
-    <!-- Шаблон поста (скрыт, используется для клонирования) -->
+    <!-- Шаблон поста -->
     <template id="postTemplate">
-        <div class="card post-item" data-post-id="">
+        <div class="post-item" data-post-id="">
             <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 15px;">
                 <div style="flex: 1;">
                     <h3 style="margin-bottom: 5px;">
-                        <a href="topic.html" class="post-title-link" style="text-decoration: none; color: #2c3e50;"></a>
+                        <a href="topic.html" class="post-title-link"></a>
                     </h3>
-                    <p class="post-meta" style="color: #7f8c8d; margin-bottom: 10px; font-size: 14px;">
+                    <p class="post-meta">
                         Автор: <a href="profile.html" class="post-author" style="color: #e67e22;"></a> • 
                         <span class="post-date"></span> • 
                         Статус: <span class="post-status"></span>
                     </p>
-                    <p class="post-excerpt" style="margin-bottom: 10px;"></p>
+                    <p class="post-excerpt"></p>
                     
-                    <!-- Теги поста -->
-                    <div class="post-tags" style="margin-top: 10px;"></div>
+                    <div class="post-tags"></div>
                 </div>
-                <div class="post-stats" style="text-align: right; color: #7f8c8d; font-size: 14px; min-width: 80px;">
+                <div class="post-stats">
                     <div class="post-comments">💬 0</div>
                     <div class="post-likes">❤️ 0</div>
                 </div>
@@ -113,6 +145,29 @@
     </template>
 
     <script>
+        // Выпадающее меню по клику
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const menuDropdown = document.getElementById('menuDropdown');
+            
+            if (menuBtn && menuDropdown) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    menuDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+                        menuDropdown.classList.remove('show');
+                    }
+                });
+                
+                menuDropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+
         // Текущая категория и параметры
         let currentCategory = {
             id: 1,
@@ -124,9 +179,9 @@
         let currentPage = 1;
         let currentSort = 'new';
         let currentStatus = 'all';
-        let isLoggedIn = false; // Изменится при авторизации
+        let isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
 
-        // Моковые данные постов (в реальности придут с сервера)
+        // Моковые данные постов
         const mockPosts = [
             {
                 id: 1,
@@ -137,7 +192,7 @@
                 status: 'published',
                 statusText: 'опубликовано',
                 statusClass: 'status-published',
-                excerpt: 'Делюсь проверенным рецептом теста, которое всегда получается хрустящим. Ингредиенты самые простые, а результат — как в лучшей пиццерии!',
+                excerpt: 'Делюсь проверенным рецептом теста, которое всегда получается хрустящим.',
                 content: 'Полный текст поста...',
                 tags: ['пицца', 'итальянская', 'тесто', 'выпечка'],
                 commentsCount: 12,
@@ -153,7 +208,7 @@
                 status: 'published',
                 statusText: 'опубликовано',
                 statusClass: 'status-published',
-                excerpt: 'Все знают классический рецепт, но попробуйте добавить чуть-чуть орегано и качественный сыр фета — вкус станет просто божественным!',
+                excerpt: 'Все знают классический рецепт, но попробуйте добавить чуть-чуть орегано...',
                 content: 'Полный текст поста...',
                 tags: ['салат', 'греческий', 'овощи', 'сыр'],
                 commentsCount: 8,
@@ -169,7 +224,7 @@
                 status: 'draft',
                 statusText: 'черновик',
                 statusClass: 'status-draft',
-                excerpt: 'Пробую новый рецепт риса для суши. Пока в процессе, скоро допишу...',
+                excerpt: 'Пробую новый рецепт риса для суши. Пока в процессе...',
                 content: 'Полный текст поста...',
                 tags: ['суши', 'роллы', 'японская'],
                 commentsCount: 2,
@@ -185,7 +240,7 @@
                 status: 'published',
                 statusText: 'опубликовано',
                 statusClass: 'status-published',
-                excerpt: 'Настоящая итальянская карбонара делается без сливок! Только яйца, сыр, гуанчиале...',
+                excerpt: 'Настоящая итальянская карбонара делается без сливок!',
                 content: 'Полный текст поста...',
                 tags: ['паста', 'карбонара', 'итальянская'],
                 commentsCount: 31,
@@ -201,7 +256,7 @@
                 status: 'published',
                 statusText: 'опубликовано',
                 statusClass: 'status-published',
-                excerpt: 'Секрет пышного бисквита — правильно взбитые яйца и аккуратное смешивание...',
+                excerpt: 'Секрет пышного бисквита — правильно взбитые яйца...',
                 content: 'Полный текст поста...',
                 tags: ['десерт', 'выпечка', 'бисквит'],
                 commentsCount: 15,
@@ -212,20 +267,11 @@
 
         // Загрузка страницы
         document.addEventListener('DOMContentLoaded', function() {
-            // Загружаем информацию о категории
             loadCategoryInfo();
-            
-            // Загружаем посты
             loadPosts();
-            
-            // Настраиваем обработчики сортировки
             setupSortHandlers();
-            
-            // Настраиваем обработчики фильтра по статусу
             setupStatusFilters();
-            
-            // Проверяем авторизацию
-            checkAuth();
+            updateAuthButton();
         });
 
         function loadCategoryInfo() {
@@ -239,24 +285,19 @@
             const postsList = document.getElementById('postsList');
             postsList.innerHTML = '';
             
-            // Фильтруем посты по категории
             let filteredPosts = mockPosts.filter(post => post.categoryId === currentCategory.id);
             
-            // Фильтруем по статусу
             if (currentStatus !== 'all') {
                 filteredPosts = filteredPosts.filter(post => post.status === currentStatus);
             }
             
-            // Сортируем
             filteredPosts = sortPosts(filteredPosts, currentSort);
             
-            // Отображаем посты
             filteredPosts.forEach(post => {
                 const postElement = createPostElement(post);
                 postsList.appendChild(postElement);
             });
             
-            // Обновляем пагинацию
             updatePagination(filteredPosts.length);
         }
 
@@ -266,33 +307,26 @@
             
             postElement.dataset.postId = post.id;
             
-            // Заголовок и ссылка
             const titleLink = postElement.querySelector('.post-title-link');
             titleLink.textContent = post.title;
             titleLink.href = `topic.html?id=${post.id}`;
             
-            // Автор
             const authorLink = postElement.querySelector('.post-author');
             authorLink.textContent = post.author;
             authorLink.href = `profile.html?id=${post.authorId}`;
             
-            // Дата
             postElement.querySelector('.post-date').textContent = post.date;
             
-            // Статус
             const statusSpan = postElement.querySelector('.post-status');
             statusSpan.textContent = post.statusText;
             statusSpan.className = post.statusClass;
             
-            // Если черновик и не автор, скрываем или показываем с пометкой
             if (post.status === 'draft' && !isLoggedIn) {
                 postElement.style.display = 'none';
             }
             
-            // Превью текста
             postElement.querySelector('.post-excerpt').textContent = post.excerpt;
             
-            // Теги
             const tagsContainer = postElement.querySelector('.post-tags');
             post.tags.forEach(tag => {
                 const tagLink = document.createElement('a');
@@ -302,7 +336,6 @@
                 tagsContainer.appendChild(tagLink);
             });
             
-            // Статистика
             postElement.querySelector('.post-comments').innerHTML = `💬 ${post.commentsCount}`;
             postElement.querySelector('.post-likes').innerHTML = `❤️ ${post.likesCount}`;
             
@@ -314,7 +347,7 @@
             
             switch(sortType) {
                 case 'new':
-                    return sorted; // В моковых данных уже по дате
+                    return sorted;
                 case 'popular':
                     return sorted.sort((a, b) => (b.commentsCount + b.likesCount) - (a.commentsCount + a.likesCount));
                 case 'likes':
@@ -351,16 +384,11 @@
         function updateSort(sortType, element) {
             currentSort = sortType;
             
-            // Обновляем стили кнопок
-            document.querySelectorAll('.btn-secondary').forEach(btn => {
-                btn.style.background = '';
-                btn.style.color = '';
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
             
-            element.style.background = '#e67e22';
-            element.style.color = 'white';
-            
-            // Перезагружаем посты
+            element.classList.add('active');
             loadPosts();
         }
 
@@ -375,28 +403,23 @@
 
         function updatePagination(totalPosts) {
             const pagination = document.getElementById('pagination');
-            const totalPages = Math.ceil(totalPosts / 10); // 10 постов на страницу
+            const totalPages = Math.ceil(totalPosts / 10);
             
             if (totalPages <= 1) {
                 pagination.innerHTML = '';
                 return;
             }
             
-            let paginationHtml = '<a href="#" class="prev-page" style="padding: 8px 12px; background: #fff; border-radius: 5px; text-decoration: none; color: #2c3e50; border: 1px solid #ddd;">←</a>';
+            let paginationHtml = '<a href="#" class="page-link prev-page">←</a>';
             
             for (let i = 1; i <= totalPages; i++) {
-                const activeStyle = i === currentPage ? 
-                    'background: #e67e22; color: #fff;' : 
-                    'background: #fff; color: #2c3e50; border: 1px solid #ddd;';
-                
-                paginationHtml += `<a href="#" class="page-num" data-page="${i}" style="padding: 8px 12px; border-radius: 5px; text-decoration: none; ${activeStyle}">${i}</a>`;
+                const activeClass = i === currentPage ? 'active' : '';
+                paginationHtml += `<a href="#" class="page-link page-num ${activeClass}" data-page="${i}">${i}</a>`;
             }
             
-            paginationHtml += '<a href="#" class="next-page" style="padding: 8px 12px; background: #fff; border-radius: 5px; text-decoration: none; color: #2c3e50; border: 1px solid #ddd;">→</a>';
-            
+            paginationHtml += '<a href="#" class="page-link next-page">→</a>';
             pagination.innerHTML = paginationHtml;
             
-            // Добавляем обработчики
             document.querySelectorAll('.page-num').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -406,29 +429,20 @@
             });
         }
 
-        function checkAuth() {
-            const userStatus = document.getElementById('userStatus');
-            const authLink = document.getElementById('authLink');
-            
-            // Для демо - всегда гость
-            isLoggedIn = false;
-            
+        // Обновление кнопки авторизации
+        function updateAuthButton() {
+            const authBtn = document.getElementById('authBtn');
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const username = localStorage.getItem('username') || 'Елена_повар';
+
             if (isLoggedIn) {
-                userStatus.textContent = '👤 Елена_повар';
-                authLink.textContent = 'Выйти';
-                authLink.href = '#'; // Пока оставим так
-                // Добавим обработчик для выхода
-                authLink.onclick = function(e) {
-                    e.preventDefault();
-                    if (confirm('Выйти из аккаунта?')) {
-                        window.location.href = 'index.html';
-                    }
-                };
+                authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
+                authBtn.href = 'profile.html';
+                authBtn.classList.add('user-profile-btn');
             } else {
-                userStatus.textContent = '👤 Гость';
-                authLink.textContent = 'Вход';
-                authLink.href = 'login.html'; // Теперь ведет на страницу входа
-                authLink.onclick = null; // Убираем старый обработчик
+                authBtn.innerHTML = 'Вход';
+                authBtn.href = 'login.html';
+                authBtn.classList.remove('user-profile-btn');
             }
         }
     </script>
