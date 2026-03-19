@@ -35,11 +35,17 @@ header {
 
 /* Логотип слева */
 .logo {
+    display: inline-block;
+    padding-left: 35px;          /* Ширина картинки + отступ */
+    background-image: url('images/logo-icon.png'); /* Путь к картинке */
+    background-size: contain;    /* Чтобы картинка не растягивалась */
+    background-repeat: no-repeat;
+    background-position: left center; /* Выравнивание по левому краю по центру */
+    line-height: 30px;            /* Высота строки, чтобы текст был по центру картинки */
+    height: 30px;                 /* Явная высота */
     font-size: 24px;
-    font-weight: bold;
     color: #e67e22;
     text-decoration: none;
-    white-space: nowrap;
 }
 
 /* Навигация по центру */
