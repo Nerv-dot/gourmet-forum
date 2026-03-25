@@ -10,10 +10,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <!-- Логотип слева -->
-                <a href="index.html" class="logo"><span>Форум гурманов</span>
-                </a>
-                
+                <a href="index.html" class="logo">Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
                     <div class="dropdown">
@@ -41,9 +38,17 @@
                                 <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
                                 <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
                             </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🏷️ Теги</span>
+                                <a href="tags.html">Все теги</a>
+                                <a href="tag.html?id=пицца">#пицца</a>
+                                <a href="tag.html?id=паста">#паста</a>
+                                <a href="tag.html?id=десерт">#десерт</a>
+                            </div>
                         </div>
                     </div>
                     <a href="about.html" class="nav-link">О проекте</a>
+                    <a href="tags.html" class="nav-link">Теги</a>
                 </nav>
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
@@ -60,12 +65,12 @@
         </div>
 
         <div class="post-container" id="postContainer">
-            <div class="flex justify-between align-start flex-wrap gap-15 mb-20">
+            <div class="post-header-block">
                 <h1 class="post-title-main" id="postMainTitle">🍕 Бабушкина пицца на тонком тесте</h1>
                 <div id="postStatus" class="status-published">✓ Опубликовано</div>
             </div>
 
-            <div class="flex justify-between flex-wrap gap-15 mb-20 post-meta">
+            <div class="post-meta-block">
                 <div>
                     <span>Автор: <a href="profile.html" id="postAuthor" class="post-category-link">Елена_повар</a></span>
                     <span> • </span>
@@ -73,19 +78,19 @@
                     <span> • </span>
                     <span>Категория: <a href="topics.html" id="postCategory" class="post-category-link">Рецепты</a></span>
                 </div>
-                <div class="flex gap-20">
+                <div class="likes-block">
                     <span class="likes" id="postLikes">❤️ 24</span>
                 </div>
             </div>
 
-            <div id="postTags" class="mb-20">
+            <div id="postTags" class="post-tags-block">
                 <a href="tag.html" class="tag">#пицца</a>
                 <a href="tag.html" class="tag">#итальянская</a>
                 <a href="tag.html" class="tag">#тесто</a>
                 <a href="tag.html" class="tag">#выпечка</a>
             </div>
 
-            <div id="postContent" class="post-content mb-30">
+            <div id="postContent" class="post-content">
                 <h3>Ингредиенты:</h3>
                 <ul>
                     <li>Мука - 300 г</li>
@@ -116,9 +121,9 @@
         </div>
 
         <div class="comments-section" id="commentsSection">
-            <h3 class="mb-20">Комментарии <span id="commentsCount">(12)</span></h3>
+            <h3 class="comments-title">Комментарии <span id="commentsCount">(12)</span></h3>
             <div class="comments-list" id="commentsList"></div>
-            <div id="commentFormContainer" class="mt-30">
+            <div id="commentFormContainer" class="comment-form-container">
                 <h4>Добавить комментарий</h4>
                 <form id="commentForm">
                     <div class="form-group">
@@ -127,14 +132,14 @@
                     <button type="submit" class="btn">Отправить</button>
                 </form>
             </div>
-            <div id="loginToComment" class="login-message mt-30 text-center">
+            <div id="loginToComment" class="login-message">
                 <p>Чтобы оставлять комментарии, <a href="login.html">войдите</a> или <a href="login.html">зарегистрируйтесь</a>.</p>
             </div>
         </div>
 
         <div class="related-posts" id="relatedPosts">
             <h3>Похожие посты</h3>
-            <div class="related-grid mt-20" id="relatedList"></div>
+            <div class="related-grid" id="relatedList"></div>
         </div>
     </main>
 
@@ -154,7 +159,7 @@
                 <div><span class="comment-likes">❤️ 0</span></div>
             </div>
             <p class="comment-body"></p>
-            <div class="flex gap-15 mt-10">
+            <div class="comment-actions-block">
                 <button class="comment-likes-btn">❤️ Ответить</button>
                 <button class="comment-reply-btn">💬 Ответить</button>
             </div>

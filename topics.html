@@ -10,10 +10,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <!-- Логотип слева -->
-                <a href="index.html" class="logo"><span>Форум гурманов</span>
-                </a>
-                
+                <a href="index.html" class="logo">Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
                     <div class="dropdown">
@@ -41,9 +38,17 @@
                                 <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
                                 <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
                             </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🏷️ Теги</span>
+                                <a href="tags.html">Все теги</a>
+                                <a href="tag.html?id=пицца">#пицца</a>
+                                <a href="tag.html?id=паста">#паста</a>
+                                <a href="tag.html?id=десерт">#десерт</a>
+                            </div>
                         </div>
                     </div>
                     <a href="about.html" class="nav-link">О проекте</a>
+                    <a href="tags.html" class="nav-link">Теги</a>
                 </nav>
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
@@ -59,19 +64,19 @@
         </div>
 
         <div class="card category-info">
-            <div class="flex justify-between align-center flex-wrap gap-15">
+            <div class="category-header">
                 <div>
                     <h2 id="categoryTitle">🍲 Рецепты</h2>
                     <p id="categoryDescription">Делимся проверенными рецептами, спрашиваем советы, обсуждаем ингредиенты.</p>
                 </div>
-                <div class="text-right">
+                <div class="category-stats">
                     <div class="posts-count" id="postsCount">15</div>
                     <div class="posts-count-label">постов</div>
                 </div>
             </div>
         </div>
 
-        <div class="flex justify-between align-center flex-wrap gap-15 mb-20">
+        <div class="topics-header">
             <h1>Все посты в разделе</h1>
             <a href="new_topic.html" class="btn">➕ Новый пост</a>
         </div>
@@ -97,7 +102,7 @@
         </div>
 
         <div id="postsList"></div>
-        <div id="pagination" class="pagination mt-30"></div>
+        <div id="pagination" class="pagination"></div>
     </main>
 
     <footer>
@@ -108,8 +113,8 @@
 
     <template id="postTemplate">
         <div class="post-item" data-post-id="">
-            <div class="flex justify-between align-start flex-wrap gap-15">
-                <div class="flex-1">
+            <div class="post-item-inner">
+                <div class="post-item-content">
                     <h3><a href="topic.html" class="post-title-link"></a></h3>
                     <p class="post-meta">
                         Автор: <a href="profile.html" class="post-author"></a> •

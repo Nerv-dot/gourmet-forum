@@ -19,31 +19,29 @@ body {
     background-color: #f8f5f0;
     color: #2c3e50;
     line-height: 1.6;
-    position: relative;
-    margin: 0;
+    padding-top: 80px;
     background-image: url("images/Фон форум.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* необязательно, но красиво */
+    background-attachment: fixed;
 }
 
 body::before {
     content: "";
-    position: fixed; /* важно — покрывает весь экран */
+    position: fixed;
     inset: 0;
     background-image: url("images/bg.jpg");
     background-size: cover;
     background-position: center;
-    z-index: -1; /* отправляет фон назад */
+    z-index: -1;
 }
 
-/* затемнение */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4); /* регулируешь яркость */
+    background: rgba(0, 0, 0, 0.4);
     z-index: -1;
 }
 
@@ -83,23 +81,21 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    gap: 8px; /* расстояние между логотипом и текстом */
-    padding-left: 35px;          /* Ширина картинки + отступ */
-    background-image: url('images/logo.jpg'); /* Путь к картинке */
-    background-size: contain;    /* Чтобы картинка не растягивалась */
+    gap: 8px;
+    padding-left: 35px;
+    background-image: url('images/logo.jpg');
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: left center; /* Выравнивание по левому краю по центру */
-    line-height: 30px;            /* Высота строки, чтобы текст был по центру картинки */
-    height: 30px;                 /* Явная высота */
+    background-position: left center;
+    line-height: 30px;
+    height: 30px;
     font-size: 24px;
     color: #e67e22;
     text-decoration: none;
-    
 }
 
 .logo img {
     display: block;
-
 }
 
 .logo span {
@@ -139,7 +135,6 @@ header {
     background: #e67e22;
     color: white;
 }
-
 
 /* Выпадающее меню ПО КЛИКУ */
 .dropdown {
@@ -259,6 +254,125 @@ footer {
     margin-top: 40px;
 }
 
+/* ===== КАРТОЧКИ ===== */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== ЗАГОЛОВКИ ===== */
+h1 {
+    font-size: 32px;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+/* ===== КНОПКИ ===== */
+.btn {
+    display: inline-block;
+    background: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn:hover {
+    background: #d35400;
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.btn-edit {
+    display: inline-block;
+    background: #95a5a6;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+.btn-edit:hover {
+    background: #7f8c8d;
+}
+
+/* ===== ФОРМЫ ===== */
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.form-control:focus {
+    outline: none;
+    border-color: #e67e22;
+}
+
+.required-star {
+    color: #e67e22;
+}
+
+.hint {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
 /* ===== СТИЛИ ДЛЯ ПРОФИЛЯ ===== */
 .profile-header {
     background: #fff;
@@ -284,23 +398,35 @@ footer {
     font-size: 60px;
     font-weight: bold;
     box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+    overflow: hidden;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .profile-info {
     flex: 1;
 }
-
 .profile-info h1 {
     font-size: 36px;
     margin-bottom: 5px;
     border-bottom: none;
     color: #2c3e50;
 }
-
 .profile-info .meta {
     color: #7f8c8d;
     margin-bottom: 20px;
     font-size: 16px;
+}
+
+.profile-extra {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #e67e22;
 }
 
 .profile-stats {
@@ -330,7 +456,6 @@ footer {
     margin-top: 5px;
 }
 
-/* Вкладки профиля */
 .profile-tabs {
     display: flex;
     gap: 10px;
@@ -348,17 +473,15 @@ footer {
     transition: all 0.2s;
     font-weight: 500;
 }
-
 .tab:hover {
     background: #e0e0e0;
 }
-
 .tab.active {
     background: #e67e22;
     color: white;
 }
 
-/* Карточки постов */
+/* ===== КАРТОЧКИ ПОСТОВ ===== */
 .post-card {
     background: #fff;
     border-radius: 10px;
@@ -368,7 +491,6 @@ footer {
     transition: transform 0.2s;
     border: 1px solid #eee;
 }
-
 .post-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -387,7 +509,6 @@ footer {
     text-decoration: none;
     font-weight: bold;
 }
-
 .post-title:hover {
     color: #e67e22;
 }
@@ -415,6 +536,7 @@ footer {
     color: #7f8c8d;
     font-size: 14px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .post-excerpt {
@@ -427,6 +549,7 @@ footer {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .tag {
@@ -437,7 +560,6 @@ footer {
     color: #2c3e50;
     text-decoration: none;
 }
-
 .tag:hover {
     background: #e67e22;
     color: white;
@@ -463,18 +585,16 @@ footer {
     display: flex;
     gap: 15px;
 }
-
 .post-actions a {
     color: #7f8c8d;
     text-decoration: none;
     font-size: 14px;
 }
-
 .post-actions a:hover {
     color: #e67e22;
 }
 
-/* Комментарии в профиле */
+/* ===== КОММЕНТАРИИ ===== */
 .comment-item {
     background: #f9f9f9;
     border-left: 3px solid #e67e22;
@@ -489,12 +609,17 @@ footer {
     margin-bottom: 10px;
     color: #7f8c8d;
     font-size: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .comment-post-link {
     color: #e67e22;
     text-decoration: none;
     font-weight: bold;
+}
+.comment-post-link:hover {
+    text-decoration: underline;
 }
 
 .comment-body {
@@ -514,27 +639,17 @@ footer {
     font-weight: bold;
 }
 
+.comment-actions {
+    display: flex;
+    gap: 15px;
+}
 .comment-actions a {
     color: #7f8c8d;
     text-decoration: none;
     font-size: 14px;
-    margin-left: 15px;
 }
-
-/* Кнопка редактирования профиля */
-.btn-edit {
-    display: inline-block;
-    background: #95a5a6;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 20px;
-    transition: background 0.2s;
-}
-
-.btn-edit:hover {
-    background: #7f8c8d;
+.comment-actions a:hover {
+    color: #e67e22;
 }
 
 /* ===== СТИЛИ ДЛЯ РЕКЛАМНОГО ТЕКСТА ===== */
@@ -553,7 +668,6 @@ footer {
     margin-bottom: 20px;
     line-height: 1.3;
 }
-
 .hero-title span {
     color: #e67e22;
     border-bottom: 2px solid #e67e22;
@@ -565,7 +679,6 @@ footer {
     line-height: 1.8;
     color: #34495e;
 }
-
 .hero-content p {
     margin-bottom: 20px;
 }
@@ -594,7 +707,6 @@ footer {
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
 }
-
 .hero-cta:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
@@ -640,12 +752,15 @@ footer {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     border-left: 3px solid #e67e22;
 }
-
 .about-card h2 {
     margin-bottom: 15px;
     color: #e67e22;
     border-bottom: 2px solid #e67e22;
     padding-bottom: 10px;
+}
+.about-card ul {
+    margin-left: 20px;
+    line-height: 1.8;
 }
 
 .about-quote {
@@ -669,52 +784,15 @@ footer {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: #e67e22;
-}
-
-.required-star {
-    color: #e67e22;
-}
-
-.hint {
-    font-size: 12px;
-    color: #7f8c8d;
-    margin-top: 5px;
-}
-
 .popular-tags {
     margin-bottom: 20px;
 }
-
 .popular-tags span {
     font-size: 14px;
     color: #7f8c8d;
     margin-right: 10px;
 }
-
-.tag-link {
-    display: inline-block;
+.popular-tags .tag-link {
     background: #f0f0f0;
     padding: 3px 8px;
     border-radius: 3px;
@@ -724,8 +802,7 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
-
-.tag-link:hover {
+.popular-tags .tag-link:hover {
     background: #e67e22;
     color: white;
 }
@@ -736,52 +813,53 @@ footer {
     flex-wrap: wrap;
 }
 
-.btn {
-    display: inline-block;
-    background: #e67e22;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.btn:hover {
-    background: #d35400;
-}
-
-.btn-secondary {
-    background: #95a5a6;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.btn-secondary:hover {
-    background: #7f8c8d;
-}
-
 .tips-card {
     background: #f8f5f0;
     border-radius: 10px;
     padding: 20px;
     margin-top: 30px;
 }
-
 .tips-card h3 {
     color: #e67e22;
     margin-bottom: 15px;
 }
-
 .tips-card ul {
     margin-left: 20px;
     line-height: 1.8;
+}
+
+/* ===== СТИЛИ ДЛЯ ПОДКАТЕГОРИЙ ===== */
+.subcategory-group {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f5f0;
+    border-radius: 8px;
+    border-left: 3px solid #e67e22;
+}
+.subcategory-group > label:first-child {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.subcategory-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.subcategory-option {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 200px;
+}
+.subcategory-option input[type="radio"] {
+    margin-right: 8px;
+}
+.subcategory-option label {
+    display: inline;
+    font-weight: normal;
+    color: #2c3e50;
 }
 
 /* ===== СТИЛИ ДЛЯ СПИСКА ТЕМ ===== */
@@ -800,11 +878,9 @@ footer {
     text-decoration: none;
     transition: background 0.2s;
 }
-
 .sort-btn:hover {
     background: #7f8c8d;
 }
-
 .sort-btn.active {
     background: #e67e22;
 }
@@ -847,7 +923,6 @@ footer {
     color: #2c3e50;
     border: 1px solid #ddd;
 }
-
 .page-link.active {
     background: #e67e22;
     color: white;
@@ -864,21 +939,54 @@ footer {
     transition: transform 0.2s;
     border: 1px solid #eee;
 }
-
 .post-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
-
-.post-title-link {
+.post-item .post-title-link {
     font-size: 20px;
     color: #2c3e50;
     text-decoration: none;
     font-weight: bold;
 }
-
-.post-title-link:hover {
+.post-item .post-title-link:hover {
     color: #e67e22;
+}
+.post-item .post-meta {
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.post-item .post-author {
+    color: #e67e22;
+    text-decoration: none;
+}
+.post-item .post-author:hover {
+    text-decoration: underline;
+}
+.post-item .post-excerpt {
+    margin-bottom: 10px;
+}
+.post-item .post-stats {
+    text-align: right;
+    color: #7f8c8d;
+    font-size: 14px;
+    min-width: 80px;
+}
+.post-item .post-tags {
+    margin-top: 10px;
+}
+.post-item .post-tags .tag {
+    background: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #2c3e50;
+    text-decoration: none;
+}
+.post-item .post-tags .tag:hover {
+    background: #e67e22;
+    color: white;
 }
 
 /* ===== СТИЛИ ДЛЯ ПРОСМОТРА ПОСТА ===== */
@@ -909,12 +1017,10 @@ footer {
     margin-bottom: 30px;
     line-height: 1.8;
 }
-
 .post-content h3 {
     margin: 20px 0 10px;
     color: #e67e22;
 }
-
 .post-content ul {
     margin-left: 20px;
     margin-bottom: 20px;
@@ -938,7 +1044,6 @@ footer {
     cursor: pointer;
     font-size: 14px;
 }
-
 .action-btn:hover {
     background: #7f8c8d;
 }
@@ -976,17 +1081,17 @@ footer {
     padding: 15px;
     border-radius: 5px;
 }
-
+.related-item h4 {
+    margin-bottom: 10px;
+}
 .related-title {
     text-decoration: none;
     color: #2c3e50;
     font-weight: bold;
 }
-
 .related-title:hover {
     color: #e67e22;
 }
-
 .related-meta {
     display: flex;
     gap: 10px;
@@ -995,10 +1100,469 @@ footer {
     margin-top: 10px;
 }
 
+/* ===== ДОПОЛНИТЕЛЬНЫЕ КЛАССЫ ДЛЯ ЗАМЕНЫ INLINE-СТИЛЕЙ ===== */
+
+/* Хлебные крошки */
+.breadcrumbs {
+    margin-bottom: 20px;
+    color: #7f8c8d;
+}
+.breadcrumbs a {
+    color: #7f8c8d;
+    text-decoration: none;
+}
+.breadcrumbs a:hover {
+    color: #e67e22;
+}
+
+/* Стили для страницы входа */
+.login-container {
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+.tabs-container {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-login {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background: #f0f0f0;
+    color: #2c3e50;
+    text-decoration: none;
+    border-radius: 5px 5px 0 0;
+    transition: all 0.2s;
+}
+.tab-login.active {
+    background: #e67e22;
+    color: #fff;
+}
+.tab-login:not(.active):hover {
+    background: #e0e0e0;
+}
+
+.tab-register {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background: #f0f0f0;
+    color: #2c3e50;
+    text-decoration: none;
+    border-radius: 5px 5px 0 0;
+    transition: all 0.2s;
+}
+.tab-register.active {
+    background: #e67e22;
+    color: #fff;
+}
+.tab-register:not(.active):hover {
+    background: #e0e0e0;
+}
+
+.forgot-link {
+    color: #7f8c8d;
+    font-size: 14px;
+    text-decoration: none;
+}
+.forgot-link:hover {
+    color: #e67e22;
+}
+
+.text-muted {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* Утилиты */
+.text-center {
+    text-align: center;
+    color: #fff;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+.mt-40 { margin-top: 40px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+.mb-40 { margin-bottom: 40px; }
+
+.gap-10 { gap: 10px; }
+.gap-15 { gap: 15px; }
+.gap-20 { gap: 20px; }
+
+.flex { display: flex; }
+.flex-column { display: flex; flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.align-center { align-items: center; }
+.align-start { align-items: flex-start; }
+
+.w-100 { width: 100%; }
+.btn-block { display: block; width: 100%; text-align: center; }
+
+/* Стили для страницы профиля */
+.posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.comments-title {
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.notifications-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.subscribers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.subscriber-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.subscriber-avatar {
+    width: 50px;
+    height: 50px;
+    background: #e67e22;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.subscriber-info {
+    flex: 1;
+}
+.subscriber-info small {
+    color: #7f8c8d;
+    font-size: 12px;
+}
+
+/* Стили для страницы тем */
+.category-info {
+    background: #f8f5f0;
+    margin-bottom: 30px;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.category-stats {
+    text-align: right;
+}
+
+.posts-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.posts-count-label {
+    color: #7f8c8d;
+}
+
+.topics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Стили для просмотра поста */
+.post-header-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.post-meta-block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: #7f8c8d;
+}
+
+.likes-block {
+    display: flex;
+    gap: 20px;
+}
+
+.post-tags-block {
+    margin-bottom: 20px;
+}
+
+.comment-form-container {
+    margin-top: 30px;
+}
+
+.login-message {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background: #f8f5f0;
+    border-radius: 5px;
+}
+
+.comment-actions-block {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Стили для страницы тегов */
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 40px 0;
+}
+
+.tag-cloud-item {
+    background: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.2s;
+}
+.tag-cloud-item:hover {
+    background: #e67e22;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.tag-meta {
+    color: #7f8c8d;
+}
+
+/* Стили для поста в профиле */
+.post-category-link {
+    color: #e67e22;
+    text-decoration: none;
+}
+.post-category-link:hover {
+    text-decoration: underline;
+}
+
+.delete-link {
+    color: #e74c3c;
+}
+.delete-link:hover {
+    color: #c0392b;
+}
+
+.author-buttons {
+    margin-left: auto;
+    display: none;
+}
+
+/* Модальное окно */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #95a5a6;
+}
+.modal-close:hover {
+    color: #e67e22;
+}
+
+.modal-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e67e22;
+}
+
+.modal-hint {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+/* Стили для рекламного текста */
+.stats-badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0 10px;
+}
+
+/* Стили для комментариев */
+.comment-likes-btn {
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    cursor: pointer;
+    font-size: 14px;
+}
+.comment-likes-btn:hover {
+    color: #e67e22;
+}
+
+.comment-reply-btn {
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    cursor: pointer;
+    font-size: 14px;
+}
+.comment-reply-btn:hover {
+    color: #e67e22;
+}
+
+/* Демо-стили */
+.demo-notice {
+    background: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.demo-notice svg {
+    width: 24px;
+    height: 24px;
+    fill: #856404;
+}
+
+.demo-post {
+    position: relative;
+    overflow: hidden;
+}
+.demo-post::after {
+    content: "ДЕМО";
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background: #e67e22;
+    color: white;
+    padding: 5px 30px;
+    font-size: 12px;
+    font-weight: bold;
+    transform: rotate(45deg);
+    opacity: 0.8;
+}
+
+.demo-comment {
+    position: relative;
+}
+.demo-comment::before {
+    content: "⚡ Демо-данные";
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: #e67e22;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.demo-badge {
+    display: inline-block;
+    background: #e67e22;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
 /* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 768px) {
     body {
-        padding-top: 120px; /* Больше отступ для мобильных */
+        padding-top: 120px;
     }
     
     .header-content {
@@ -1073,7 +1637,7 @@ footer {
 
 @media (max-width: 480px) {
     body {
-        padding-top: 150px; /* Ещё больше для маленьких экранов */
+        padding-top: 150px;
     }
     
     .main-nav {

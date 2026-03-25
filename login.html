@@ -9,9 +9,8 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-content"><!-- Логотип слева -->
-                <a href="index.html" class="logo"><span>Форум гурманов</span>
-
+            <div class="header-content">
+                <a href="index.html" class="logo">Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
                     <div class="dropdown">
@@ -39,9 +38,17 @@
                                 <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
                                 <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
                             </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🏷️ Теги</span>
+                                <a href="tags.html">Все теги</a>
+                                <a href="tag.html?id=пицца">#пицца</a>
+                                <a href="tag.html?id=паста">#паста</a>
+                                <a href="tag.html?id=десерт">#десерт</a>
+                            </div>
                         </div>
                     </div>
                     <a href="about.html" class="nav-link">О проекте</a>
+                    <a href="tags.html" class="nav-link">Теги</a>
                 </nav>
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
@@ -121,12 +128,14 @@
                 });
             }
         });
+
         const loginTab = document.getElementById('loginTab');
         const registerTab = document.getElementById('registerTab');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const urlParams = new URLSearchParams(window.location.search);
         const tabParam = urlParams.get('tab');
+
         if (tabParam === 'register') {
             setTimeout(() => {
                 registerTab.classList.add('active');
@@ -135,6 +144,7 @@
                 loginForm.style.display = 'none';
             }, 100);
         }
+
         loginTab.addEventListener('click', function(e) {
             e.preventDefault();
             loginTab.classList.add('active');
@@ -142,6 +152,7 @@
             loginForm.style.display = 'block';
             registerForm.style.display = 'none';
         });
+
         registerTab.addEventListener('click', function(e) {
             e.preventDefault();
             registerTab.classList.add('active');
@@ -149,6 +160,7 @@
             registerForm.style.display = 'block';
             loginForm.style.display = 'none';
         });
+
         document.getElementById('loginFormElement').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -162,6 +174,7 @@
                 alert('Заполните все поля');
             }
         });
+
         document.getElementById('registerFormElement').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('reg-name').value;
@@ -180,6 +193,7 @@
             alert('Регистрация успешна!');
             window.location.href = 'index.html';
         });
+
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';

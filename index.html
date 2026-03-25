@@ -10,17 +10,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-<<<<<<< HEAD
-                <a href="index.html" class="logo"> Форум гурманов</a>
-=======
-                <!-- Логотип слева -->
-                <a href="index.html" class="logo">
-                    <span>Форум гурманов</span>
-                    
-                </a>
-                
-                <!-- Навигация по центру (без Профиля) -->
->>>>>>> bf50a0a897cfb655f67f94b5b3fa97b4466c805c
+                <a href="index.html" class="logo">Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
                     <div class="dropdown">
@@ -48,9 +38,17 @@
                                 <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
                                 <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
                             </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🏷️ Теги</span>
+                                <a href="tags.html">Все теги</a>
+                                <a href="tag.html?id=пицца">#пицца</a>
+                                <a href="tag.html?id=паста">#паста</a>
+                                <a href="tag.html?id=десерт">#десерт</a>
+                            </div>
                         </div>
                     </div>
                     <a href="about.html" class="nav-link">О проекте</a>
+                    <a href="tags.html" class="nav-link">Теги</a>
                 </nav>
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
@@ -69,7 +67,7 @@
                 <p>Почему? Потому что большинство кулинарных сайтов копируют рецепты друг у друга, не проверяя их. А вы мучаетесь вопросом: <strong>"Почему у меня не получилось, как на картинке?"</strong></p>
                 <p><strong>Мы хотим это изменить.</strong></p>
                 <p>Форум гурманов — это место, где <strong>каждый рецепт создается реальными людьми</strong>. Никакого копипаста: только живые фотографии, личный опыт и честные отзывы.</p>
-                <div class="stats-badge-group flex flex-wrap gap-10 mb-20">
+                <div class="stats-badge-group">
                     <span class="stats-badge">👨‍🍳 Модераторы — профессиональные повара</span>
                     <span class="stats-badge">📸 Только живые фото</span>
                     <span class="stats-badge">💬 Честные отзывы</span>
@@ -80,7 +78,7 @@
                     "Представьте: вы заходите на форум и видите не бездушные тексты, а живые обсуждения. Здесь можно спросить совет у той самой бабушки, чей пирог уже хвалят в комментариях, или обсудить новый ресторан с теми, кто там действительно был. А если эксперимент не удался — вам сразу подскажут, что пошло не так."
                 </div>
                 <p><strong>Мы только начинаем, и это наше преимущество.</strong> Здесь нет тонны непроверенного контента. Каждый пост, который вы видите, создан с заботой о качестве.</p>
-                <p class="hero-subtitle text-center mt-30 mb-10">Присоединяйтесь к сообществу, где еду готовят с душой.</p>
+                <p class="hero-subtitle">Присоединяйтесь к сообществу, где еду готовят с душой.</p>
                 <div class="text-center">
                     <a href="login.html?tab=register" class="hero-cta">🍳 Присоединиться</a>
                 </div>
@@ -101,8 +99,8 @@
         <div class="modal-container">
             <button id="closeModal" class="modal-close">&times;</button>
             <h2 class="modal-title">🍴 Добро пожаловать!</h2>
-            <div class="flex flex-column gap-15">
-                <a href="login.html" class="btn btn-block text-center">Войти / Зарегистрироваться</a>
+            <div class="flex-column">
+                <a href="login.html" class="btn btn-block">Войти / Зарегистрироваться</a>
                 <button id="guestButton" class="btn-secondary btn-block">Продолжить как гость</button>
             </div>
             <p class="modal-hint">Гости могут читать форум, но не могут писать сообщения и ставить лайки.</p>

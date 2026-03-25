@@ -10,11 +10,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <!-- Логотип слева -->
-                <a href="index.html" class="logo"><span>Форум гурманов</span>
-                </a>
-                
-                <!-- Навигация по центру -->
+                <a href="index.html" class="logo">Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
                     <div class="dropdown">
@@ -42,9 +38,17 @@
                                 <a href="topics.html?category=qa&subcategory=substitutes">Замена продуктов</a>
                                 <a href="topics.html?category=qa&subcategory=storage">Хранение</a>
                             </div>
+                            <div class="dropdown-section">
+                                <span class="dropdown-section-title">🏷️ Теги</span>
+                                <a href="tags.html">Все теги</a>
+                                <a href="tag.html?id=пицца">#пицца</a>
+                                <a href="tag.html?id=паста">#паста</a>
+                                <a href="tag.html?id=десерт">#десерт</a>
+                            </div>
                         </div>
                     </div>
                     <a href="about.html" class="nav-link">О проекте</a>
+                    <a href="tags.html" class="nav-link">Теги</a>
                 </nav>
                 <div class="auth-section">
                     <a href="profile.html" class="auth-btn user-profile-btn" id="authBtn">
@@ -69,8 +73,9 @@
         </div>
 
         <div class="profile-header">
+            <!-- Аватар в виде первой буквы имени -->
             <div class="profile-avatar" id="profileAvatar">
-                <img src="images/ava.png" alt="Avatar">
+                <span id="avatarInitial">Е</span>
             </div>
             <div class="profile-info">
                 <h1>Елена_повар <span class="demo-badge">DEMO</span></h1>
@@ -110,7 +115,7 @@
         </div>
 
         <div id="posts-tab">
-            <div class="flex justify-between align-center mb-30">
+            <div class="posts-header">
                 <h2>Мои посты <span class="demo-badge">12 постов</span></h2>
                 <a href="new_topic.html" class="btn">➕ Новый пост</a>
             </div>
@@ -203,7 +208,7 @@
         </div>
 
         <div id="comments-tab" style="display: none;">
-            <h2 class="mb-30">Мои комментарии <span class="demo-badge">48 комментариев</span></h2>
+            <h2 class="comments-title">Мои комментарии <span class="demo-badge">48 комментариев</span></h2>
             <div class="comment-item demo-comment">
                 <div class="comment-header">
                     <span>К посту: <a href="topic.html" class="comment-post-link">🍕 Бабушкина пицца на тонком тесте</a></span>
@@ -249,7 +254,7 @@
         </div>
 
         <div id="liked-tab" style="display: none;">
-            <h2 class="mb-30">Понравившиеся посты <span class="demo-badge">34 поста</span></h2>
+            <h2 class="comments-title">Понравившиеся посты <span class="demo-badge">34 поста</span></h2>
             <div class="post-card">
                 <div class="post-header">
                     <a href="topic.html" class="post-title">🍰 Тирамису по-домашнему</a>
@@ -287,7 +292,7 @@
         </div>
 
         <div id="subscribers-tab" style="display: none;">
-            <h2 class="mb-30">Мои подписчики <span class="demo-badge">234 подписчика</span></h2>
+            <h2 class="comments-title">Мои подписчики <span class="demo-badge">234 подписчика</span></h2>
             <div class="subscribers-grid">
                 <div class="subscriber-card">
                     <div class="subscriber-avatar">А</div>
@@ -321,7 +326,7 @@
         </div>
 
         <div id="settings-tab" style="display: none;">
-            <h2 class="mb-30">Настройки профиля</h2>
+            <h2 class="comments-title">Настройки профиля</h2>
             <div class="card">
                 <h3>Основная информация</h3>
                 <form onsubmit="alert('Демо-режим: настройки сохранены'); return false;">
@@ -343,7 +348,7 @@
                     </div>
                     <div class="form-group">
                         <label>Уведомления</label>
-                        <div class="flex flex-wrap gap-20">
+                        <div class="notifications-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" checked> О новых комментариях
                             </label>
@@ -407,6 +412,13 @@
                     e.stopPropagation();
                 });
             }
+            
+            // Обновляем аватар из имени пользователя
+            const username = localStorage.getItem('username') || 'Елена_повар';
+            const firstLetter = username.charAt(0).toUpperCase();
+            document.getElementById('avatarInitial').textContent = firstLetter;
+            document.getElementById('avatarLetter').textContent = firstLetter;
+            document.getElementById('usernameDisplay').textContent = username;
         });
 
         function switchTab(tabName) {
