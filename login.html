@@ -10,11 +10,9 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
+                <a href="index.html" class="logo"> Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -42,10 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    
                     <a href="about.html" class="nav-link">О проекте</a>
                 </nav>
-                
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
                 </div>
@@ -54,14 +50,12 @@
     </header>
 
     <main class="container">
-        <div style="max-width: 400px; margin: 40px auto;">
-            <h1 style="text-align: center;">Добро пожаловать!</h1>
-
-            <div style="display: flex; margin-bottom: 20px; border-bottom: 2px solid #eee;">
-                <a href="#" id="loginTab" style="flex: 1; text-align: center; padding: 10px; background: #e67e22; color: #fff; text-decoration: none; border-radius: 5px 5px 0 0;">Вход</a>
-                <a href="#" id="registerTab" style="flex: 1; text-align: center; padding: 10px; background: #f0f0f0; color: #2c3e50; text-decoration: none; border-radius: 5px 5px 0 0;">Регистрация</a>
+        <div class="login-container">
+            <h1 class="text-center">Добро пожаловать!</h1>
+            <div class="tabs-container">
+                <a href="#" id="loginTab" class="tab-login active">Вход</a>
+                <a href="#" id="registerTab" class="tab-register">Регистрация</a>
             </div>
-
             <div id="loginForm" class="card">
                 <form id="loginFormElement">
                     <div class="form-group">
@@ -72,13 +66,12 @@
                         <label for="login-password">Пароль</label>
                         <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%;">Войти</button>
+                    <button type="submit" class="btn btn-block">Войти</button>
                 </form>
-                <div style="text-align: center; margin-top: 20px;">
-                    <a href="#" style="color: #7f8c8d; font-size: 14px;">Забыли пароль?</a>
+                <div class="text-center mt-20">
+                    <a href="#" class="forgot-link">Забыли пароль?</a>
                 </div>
             </div>
-
             <div id="registerForm" class="card" style="display: none;">
                 <form id="registerFormElement">
                     <div class="form-group">
@@ -93,10 +86,10 @@
                         <label for="reg-password2">Повторите пароль</label>
                         <input type="password" id="reg-password2" class="form-control" placeholder="••••••••" required>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%;">Зарегистрироваться</button>
+                    <button type="submit" class="btn btn-block">Зарегистрироваться</button>
                 </form>
-                <div style="text-align: center; margin-top: 20px; font-size: 14px; color: #7f8c8d;">
-                    Регистрируясь, вы соглашаетесь с правилами форума.
+                <div class="text-center mt-20">
+                    <small class="text-muted">Регистрируясь, вы соглашаетесь с правилами форума.</small>
                 </div>
             </div>
         </div>
@@ -109,75 +102,56 @@
     </footer>
 
     <script>
-        // Выпадающее меню
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
         });
-
-        // Переключение вкладок
         const loginTab = document.getElementById('loginTab');
         const registerTab = document.getElementById('registerTab');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
-
         const urlParams = new URLSearchParams(window.location.search);
         const tabParam = urlParams.get('tab');
-
         if (tabParam === 'register') {
             setTimeout(() => {
-                registerTab.style.background = '#e67e22';
-                registerTab.style.color = '#fff';
-                loginTab.style.background = '#f0f0f0';
-                loginTab.style.color = '#2c3e50';
+                registerTab.classList.add('active');
+                loginTab.classList.remove('active');
                 registerForm.style.display = 'block';
                 loginForm.style.display = 'none';
             }, 100);
         }
-
         loginTab.addEventListener('click', function(e) {
             e.preventDefault();
-            loginTab.style.background = '#e67e22';
-            loginTab.style.color = '#fff';
-            registerTab.style.background = '#f0f0f0';
-            registerTab.style.color = '#2c3e50';
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
             loginForm.style.display = 'block';
             registerForm.style.display = 'none';
         });
-
         registerTab.addEventListener('click', function(e) {
             e.preventDefault();
-            registerTab.style.background = '#e67e22';
-            registerTab.style.color = '#fff';
-            loginTab.style.background = '#f0f0f0';
-            loginTab.style.color = '#2c3e50';
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
             registerForm.style.display = 'block';
             loginForm.style.display = 'none';
         });
-
-        // Обработка входа
         document.getElementById('loginFormElement').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
-            
             if (email && password) {
                 localStorage.setItem('userLoggedIn', 'true');
                 localStorage.setItem('username', email.split('@')[0] || 'Пользователь');
@@ -187,36 +161,28 @@
                 alert('Заполните все поля');
             }
         });
-
-        // Обработка регистрации
         document.getElementById('registerFormElement').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('reg-name').value;
             const password = document.getElementById('reg-password').value;
             const password2 = document.getElementById('reg-password2').value;
-            
             if (!name || !password || !password2) {
                 alert('Заполните все поля');
                 return;
             }
-            
             if (password !== password2) {
                 alert('Пароли не совпадают');
                 return;
             }
-            
             localStorage.setItem('userLoggedIn', 'true');
             localStorage.setItem('username', name);
             alert('Регистрация успешна!');
             window.location.href = 'index.html';
         });
-
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             const username = localStorage.getItem('username') || 'Елена_повар';
-
             if (isLoggedIn) {
                 authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
                 authBtn.href = 'profile.html';
@@ -227,7 +193,6 @@
                 authBtn.classList.remove('user-profile-btn');
             }
         }
-
         updateAuthButton();
     </script>
 </body>

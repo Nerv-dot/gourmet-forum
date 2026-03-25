@@ -10,14 +10,9 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <!-- Логотип слева -->
-                <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
-                <!-- Навигация по центру (без Профиля) -->
+                <a href="index.html" class="logo"> Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
-                    <!-- Выпадающее меню -->
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -45,11 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    
                     <a href="about.html" class="nav-link">О проекте</a>
                 </nav>
-                
-                <!-- Кнопка входа/профиля справа -->
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
                 </div>
@@ -58,43 +50,30 @@
     </header>
 
     <main class="container">
-        <!-- Веб-райтинг -->
         <div class="hero-section">
             <h1 class="hero-title">
                 <span>Когда вы готовите по рецепту из интернета,</span><br>
                 вы едите не то, что хотели.
             </h1>
-            
             <div class="hero-content">
                 <p>Почему? Потому что большинство кулинарных сайтов копируют рецепты друг у друга, не проверяя их. А вы мучаетесь вопросом: <strong>"Почему у меня не получилось, как на картинке?"</strong></p>
-                
                 <p><strong>Мы хотим это изменить.</strong></p>
-                
                 <p>Форум гурманов — это место, где <strong>каждый рецепт создается реальными людьми</strong>. Никакого копипаста: только живые фотографии, личный опыт и честные отзывы.</p>
-                
-                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0;">
+                <div class="stats-badge-group flex flex-wrap gap-10 mb-20">
                     <span class="stats-badge">👨‍🍳 Модераторы — профессиональные повара</span>
                     <span class="stats-badge">📸 Только живые фото</span>
                     <span class="stats-badge">💬 Честные отзывы</span>
                     <span class="stats-badge">🔥 Никакого копипаста</span>
                 </div>
-                
                 <p>Наши модераторы — профессиональные повара. Они не просто следят за порядком, но и помогают участникам: подсказывают, как улучшить рецепт, отвечают на вопросы, делятся секретами.</p>
-                
                 <div class="hero-quote">
                     "Представьте: вы заходите на форум и видите не бездушные тексты, а живые обсуждения. Здесь можно спросить совет у той самой бабушки, чей пирог уже хвалят в комментариях, или обсудить новый ресторан с теми, кто там действительно был. А если эксперимент не удался — вам сразу подскажут, что пошло не так."
                 </div>
-                
                 <p><strong>Мы только начинаем, и это наше преимущество.</strong> Здесь нет тонны непроверенного контента. Каждый пост, который вы видите, создан с заботой о качестве.</p>
-                
-                <p style="font-size: 20px; font-weight: bold; text-align: center; margin: 30px 0 10px;">
-                    Присоединяйтесь к сообществу, где еду готовят с душой.
-                </p>
-                
-                <div style="text-align: center;">
+                <p class="hero-subtitle text-center mt-30 mb-10">Присоединяйтесь к сообществу, где еду готовят с душой.</p>
+                <div class="text-center">
                     <a href="login.html?tab=register" class="hero-cta">🍳 Присоединиться</a>
                 </div>
-                
                 <div class="echo-phrase">
                     Форум гурманов — где каждый рецепт становится вашим.
                 </div>
@@ -108,52 +87,43 @@
         </div>
     </footer>
 
-    <!-- Модальное окно приветствия -->
-    <div id="welcomeModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 30px; border-radius: 10px; max-width: 400px; width: 90%; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
-            <h2 style="text-align: center; margin-bottom: 20px; color: #e67e22;">🍴 Добро пожаловать!</h2>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <a href="login.html" class="btn" style="text-align: center;">Войти / Зарегистрироваться</a>
-                <button id="guestButton" class="btn-secondary" style="width: 100%;">Продолжить как гость</button>
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-container">
+            <button id="closeModal" class="modal-close">&times;</button>
+            <h2 class="modal-title">🍴 Добро пожаловать!</h2>
+            <div class="flex flex-column gap-15">
+                <a href="login.html" class="btn btn-block text-center">Войти / Зарегистрироваться</a>
+                <button id="guestButton" class="btn-secondary btn-block">Продолжить как гость</button>
             </div>
-            <p style="text-align: center; margin-top: 20px; font-size: 12px; color: #7f8c8d;">
-                Гости могут читать форум, но не могут писать сообщения и ставить лайки.
-            </p>
-            <button id="closeModal" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #95a5a6;">&times;</button>
+            <p class="modal-hint">Гости могут читать форум, но не могут писать сообщения и ставить лайки.</p>
         </div>
     </div>
 
     <script>
-        // Выпадающее меню по клику
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
         });
 
-        // Модальное окно приветствия
         window.addEventListener('load', function() {
             const modalClosed = localStorage.getItem('welcomeModalClosed');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-            
             if (!modalClosed && !isLoggedIn) {
-                document.getElementById('welcomeModal').style.display = 'block';
+                document.getElementById('welcomeModal').style.display = 'flex';
             }
             updateAuthButton();
         });
@@ -177,12 +147,10 @@
             }
         });
         
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             const username = localStorage.getItem('username') || 'Елена_повар';
-
             if (isLoggedIn) {
                 authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
                 authBtn.href = 'profile.html';
@@ -193,7 +161,6 @@
                 authBtn.classList.remove('user-profile-btn');
             }
         }
-
         updateAuthButton();
     </script>
 </body>

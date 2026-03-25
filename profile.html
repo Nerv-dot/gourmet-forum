@@ -5,89 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Профиль - Форум гурманов</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Стили для заглушки */
-        .demo-notice {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .demo-notice svg {
-            width: 24px;
-            height: 24px;
-            fill: #856404;
-        }
-        
-        /* Стили для демо-данных */
-        .demo-post {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .demo-post::after {
-            content: "ДЕМО";
-            position: absolute;
-            top: 10px;
-            right: -30px;
-            background: #e67e22;
-            color: white;
-            padding: 5px 30px;
-            font-size: 12px;
-            font-weight: bold;
-            transform: rotate(45deg);
-            opacity: 0.8;
-        }
-        
-        .demo-comment {
-            position: relative;
-        }
-        
-        .demo-comment::before {
-            content: "⚡ Демо-данные";
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            background: #e67e22;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 10px;
-            font-weight: bold;
-            opacity: 0.8;
-        }
-        
-        /* Индикатор демо-режима */
-        .demo-badge {
-            display: inline-block;
-            background: #e67e22;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 10px;
-            font-weight: bold;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-content">
-                <!-- Логотип слева -->
                 <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
-                <!-- Навигация по центру -->
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
-                    <!-- Выпадающее меню -->
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -115,14 +40,11 @@
                             </div>
                         </div>
                     </div>
-                    
                     <a href="about.html" class="nav-link">О проекте</a>
                 </nav>
-                
-                <!-- Кнопка входа/профиля справа -->
                 <div class="auth-section">
                     <a href="profile.html" class="auth-btn user-profile-btn" id="authBtn">
-                        <span class="user-avatar" id="avatarLetter">Е</span> 
+                        <span class="user-avatar" id="avatarLetter">Е</span>
                         <span id="usernameDisplay">Елена_повар</span>
                         <span class="demo-badge">DEMO</span>
                     </a>
@@ -132,7 +54,6 @@
     </header>
 
     <main class="container">
-        <!-- Заглушка для демонстрации -->
         <div class="demo-notice">
             <svg viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
@@ -143,16 +64,13 @@
             </div>
         </div>
 
-        <!-- Шапка профиля -->
         <div class="profile-header">
             <div class="profile-avatar" id="profileAvatar">
                 <img src="images/ava.png" alt="Avatar">
             </div>
-            
             <div class="profile-info">
                 <h1>Елена_повар <span class="demo-badge">DEMO</span></h1>
                 <p class="meta">На форуме с 15 марта 2024</p>
-                
                 <div class="profile-stats">
                     <div class="stat-card">
                         <span class="stat-value">156</span>
@@ -171,9 +89,7 @@
                         <span class="stat-label">подписчиков</span>
                     </div>
                 </div>
-                
-                <!-- Дополнительная информация -->
-                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #e67e22;">
+                <div class="profile-extra">
                     <p><strong>📍 Город:</strong> Санкт-Петербург</p>
                     <p><strong>🍳 Любимая кухня:</strong> Итальянская, Азиатская</p>
                     <p><strong>📝 О себе:</strong> Люблю экспериментировать на кухне. Особенно удаются пицца и паста. Делюсь только проверенными рецептами!</p>
@@ -181,7 +97,6 @@
             </div>
         </div>
 
-        <!-- Вкладки профиля -->
         <div class="profile-tabs">
             <a href="#" class="tab active" onclick="switchTab('posts'); return false;">📝 Мои посты</a>
             <a href="#" class="tab" onclick="switchTab('comments'); return false;">💬 Мои комментарии</a>
@@ -190,14 +105,12 @@
             <a href="#" class="tab" onclick="switchTab('settings'); return false;">⚙️ Настройки</a>
         </div>
 
-        <!-- Содержимое вкладки "Посты" -->
         <div id="posts-tab">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <div class="flex justify-between align-center mb-30">
                 <h2>Мои посты <span class="demo-badge">12 постов</span></h2>
                 <a href="new_topic.html" class="btn">➕ Новый пост</a>
             </div>
 
-            <!-- Пост 1 -->
             <div class="post-card demo-post">
                 <div class="post-header">
                     <a href="topic.html" class="post-title">🍕 Бабушкина пицца на тонком тесте</a>
@@ -205,7 +118,7 @@
                 </div>
                 <div class="post-meta">
                     <span>📅 2 дня назад</span>
-                    <span>📂 <a href="topics.html?category=recipes&subcategory=home" style="color: #e67e22;">Рецепты / Домашняя еда</a></span>
+                    <span>📂 <a href="topics.html?category=recipes&subcategory=home" class="post-category-link">Рецепты / Домашняя еда</a></span>
                     <span>👁️ 1.2k просмотров</span>
                 </div>
                 <p class="post-excerpt">Делюсь проверенным рецептом теста, которое всегда получается хрустящим. Ингредиенты самые простые, а результат — как в лучшей пиццерии!</p>
@@ -223,12 +136,11 @@
                     </div>
                     <div class="post-actions">
                         <a href="#" onclick="alert('Демо-режим: редактирование поста'); return false;">✏️ Редактировать</a>
-                        <a href="#" onclick="alert('Демо-режим: удаление поста'); return false;" style="color: #e74c3c;">🗑️ Удалить</a>
+                        <a href="#" onclick="alert('Демо-режим: удаление поста'); return false;" class="delete-link">🗑️ Удалить</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Пост 2 (черновик) -->
             <div class="post-card demo-post">
                 <div class="post-header">
                     <a href="topic.html" class="post-title">🍣 Домашние роллы: эксперимент</a>
@@ -236,7 +148,7 @@
                 </div>
                 <div class="post-meta">
                     <span>📅 3 часа назад</span>
-                    <span>📂 <a href="topics.html?category=recipes&subcategory=asian" style="color: #e67e22;">Рецепты / Азиатская кухня</a></span>
+                    <span>📂 <a href="topics.html?category=recipes&subcategory=asian" class="post-category-link">Рецепты / Азиатская кухня</a></span>
                 </div>
                 <p class="post-excerpt">Пробую новый рецепт риса для суши. Пока в процессе, скоро допишу...</p>
                 <div class="post-tags">
@@ -251,12 +163,11 @@
                     </div>
                     <div class="post-actions">
                         <a href="#" onclick="alert('Демо-режим: продолжение черновика'); return false;">✏️ Продолжить</a>
-                        <a href="#" onclick="alert('Демо-режим: удаление черновика'); return false;" style="color: #e74c3c;">🗑️ Удалить</a>
+                        <a href="#" onclick="alert('Демо-режим: удаление черновика'); return false;" class="delete-link">🗑️ Удалить</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Пост 3 -->
             <div class="post-card demo-post">
                 <div class="post-header">
                     <a href="topic.html" class="post-title">🥘 Паста карбонара без сливок</a>
@@ -264,7 +175,7 @@
                 </div>
                 <div class="post-meta">
                     <span>📅 неделю назад</span>
-                    <span>📂 <a href="topics.html?category=recipes&subcategory=home" style="color: #e67e22;">Рецепты / Горячие блюда</a></span>
+                    <span>📂 <a href="topics.html?category=recipes&subcategory=home" class="post-category-link">Рецепты / Горячие блюда</a></span>
                     <span>👁️ 3.5k просмотров</span>
                 </div>
                 <p class="post-excerpt">Настоящая итальянская карбонара делается без сливок! Только яйца, сыр, гуанчиале. Рассказываю все секреты приготовления...</p>
@@ -281,16 +192,14 @@
                     </div>
                     <div class="post-actions">
                         <a href="#" onclick="alert('Демо-режим: редактирование поста'); return false;">✏️ Редактировать</a>
-                        <a href="#" onclick="alert('Демо-режим: удаление поста'); return false;" style="color: #e74c3c;">🗑️ Удалить</a>
+                        <a href="#" onclick="alert('Демо-режим: удаление поста'); return false;" class="delete-link">🗑️ Удалить</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Содержимое вкладки "Комментарии" (скрыто по умолчанию) -->
         <div id="comments-tab" style="display: none;">
-            <h2 style="margin-bottom: 30px;">Мои комментарии <span class="demo-badge">48 комментариев</span></h2>
-            
+            <h2 class="mb-30">Мои комментарии <span class="demo-badge">48 комментариев</span></h2>
             <div class="comment-item demo-comment">
                 <div class="comment-header">
                     <span>К посту: <a href="topic.html" class="comment-post-link">🍕 Бабушкина пицца на тонком тесте</a></span>
@@ -301,11 +210,10 @@
                     <span class="comment-likes">❤️ 5</span>
                     <div class="comment-actions">
                         <a href="#" onclick="alert('Демо-режим: редактирование комментария'); return false;">✏️ Редактировать</a>
-                        <a href="#" onclick="alert('Демо-режим: удаление комментария'); return false;" style="color: #e74c3c;">🗑️ Удалить</a>
+                        <a href="#" onclick="alert('Демо-режим: удаление комментария'); return false;" class="delete-link">🗑️ Удалить</a>
                     </div>
                 </div>
             </div>
-
             <div class="comment-item demo-comment">
                 <div class="comment-header">
                     <span>К посту: <a href="topic.html" class="comment-post-link">🥗 Греческий салат: секретный ингредиент</a></span>
@@ -316,11 +224,10 @@
                     <span class="comment-likes">❤️ 2</span>
                     <div class="comment-actions">
                         <a href="#" onclick="alert('Демо-режим: редактирование комментария'); return false;">✏️ Редактировать</a>
-                        <a href="#" onclick="alert('Демо-режим: удаление комментария'); return false;" style="color: #e74c3c;">🗑️ Удалить</a>
+                        <a href="#" onclick="alert('Демо-режим: удаление комментария'); return false;" class="delete-link">🗑️ Удалить</a>
                     </div>
                 </div>
             </div>
-
             <div class="comment-item demo-comment">
                 <div class="comment-header">
                     <span>К посту: <a href="topic.html" class="comment-post-link">🥘 Паста карбонара без сливок</a></span>
@@ -331,23 +238,21 @@
                     <span class="comment-likes">❤️ 8</span>
                     <div class="comment-actions">
                         <a href="#" onclick="alert('Демо-режим: редактирование комментария'); return false;">✏️ Редактировать</a>
-                        <a href="#" onclick="alert('Демо-режим: удаление комментария'); return false;" style="color: #e74c3c;">🗑️ Удалить</a>
+                        <a href="#" onclick="alert('Демо-режим: удаление комментария'); return false;" class="delete-link">🗑️ Удалить</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Содержимое вкладки "Понравившееся" (скрыто по умолчанию) -->
         <div id="liked-tab" style="display: none;">
-            <h2 style="margin-bottom: 30px;">Понравившиеся посты <span class="demo-badge">34 поста</span></h2>
-            
+            <h2 class="mb-30">Понравившиеся посты <span class="demo-badge">34 поста</span></h2>
             <div class="post-card">
                 <div class="post-header">
                     <a href="topic.html" class="post-title">🍰 Тирамису по-домашнему</a>
                     <span class="post-status status-published">✓ Опубликовано</span>
                 </div>
                 <div class="post-meta">
-                    <span>Автор: <a href="profile.html" style="color: #e67e22;">Мария_кондитер</a></span>
+                    <span>Автор: <a href="profile.html" class="post-category-link">Мария_кондитер</a></span>
                     <span>📅 3 дня назад</span>
                 </div>
                 <p class="post-excerpt">Нежный итальянский десерт, который легко приготовить дома. Секрет в правильном сыре маскарпоне...</p>
@@ -358,14 +263,13 @@
                     </div>
                 </div>
             </div>
-
             <div class="post-card">
                 <div class="post-header">
                     <a href="topic.html" class="post-title">🔥 Острые куриные крылышки</a>
                     <span class="post-status status-published">✓ Опубликовано</span>
                 </div>
                 <div class="post-meta">
-                    <span>Автор: <a href="profile.html" style="color: #e67e22;">Гриль_мастер</a></span>
+                    <span>Автор: <a href="profile.html" class="post-category-link">Гриль_мастер</a></span>
                     <span>📅 неделю назад</span>
                 </div>
                 <p class="post-excerpt">Идеальный рецепт для пикника. Маринад на основе соуса табаско и меда...</p>
@@ -378,35 +282,33 @@
             </div>
         </div>
 
-        <!-- Содержимое вкладки "Подписчики" (скрыто по умолчанию) -->
         <div id="subscribers-tab" style="display: none;">
-            <h2 style="margin-bottom: 30px;">Мои подписчики <span class="demo-badge">234 подписчика</span></h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
-                <div style="background: #fff; padding: 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <div style="width: 50px; height: 50px; background: #e67e22; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: bold;">А</div>
-                    <div>
+            <h2 class="mb-30">Мои подписчики <span class="demo-badge">234 подписчика</span></h2>
+            <div class="subscribers-grid">
+                <div class="subscriber-card">
+                    <div class="subscriber-avatar">А</div>
+                    <div class="subscriber-info">
                         <strong>Антон_шеф</strong><br>
                         <small>Подписан с 10 марта 2024</small>
                     </div>
                 </div>
-                <div style="background: #fff; padding: 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <div style="width: 50px; height: 50px; background: #e67e22; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: bold;">М</div>
-                    <div>
+                <div class="subscriber-card">
+                    <div class="subscriber-avatar">М</div>
+                    <div class="subscriber-info">
                         <strong>Мама_Оля</strong><br>
                         <small>Подписана с 15 марта 2024</small>
                     </div>
                 </div>
-                <div style="background: #fff; padding: 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <div style="width: 50px; height: 50px; background: #e67e22; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: bold;">С</div>
-                    <div>
+                <div class="subscriber-card">
+                    <div class="subscriber-avatar">С</div>
+                    <div class="subscriber-info">
                         <strong>Сушист_Паша</strong><br>
                         <small>Подписан с 20 марта 2024</small>
                     </div>
                 </div>
-                <div style="background: #fff; padding: 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <div style="width: 50px; height: 50px; background: #e67e22; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: bold;">К</div>
-                    <div>
+                <div class="subscriber-card">
+                    <div class="subscriber-avatar">К</div>
+                    <div class="subscriber-info">
                         <strong>Кондитер_Лена</strong><br>
                         <small>Подписана с 22 марта 2024</small>
                     </div>
@@ -414,10 +316,8 @@
             </div>
         </div>
 
-        <!-- Содержимое вкладки "Настройки" (скрыто по умолчанию) -->
         <div id="settings-tab" style="display: none;">
-            <h2 style="margin-bottom: 30px;">Настройки профиля</h2>
-            
+            <h2 class="mb-30">Настройки профиля</h2>
             <div class="card">
                 <h3>Основная информация</h3>
                 <form onsubmit="alert('Демо-режим: настройки сохранены'); return false;">
@@ -425,66 +325,56 @@
                         <label for="display-name">Отображаемое имя</label>
                         <input type="text" id="display-name" class="form-control" value="Елена_повар">
                     </div>
-                    
                     <div class="form-group">
                         <label for="user-bio">О себе</label>
                         <textarea id="user-bio" class="form-control" rows="4">Люблю экспериментировать на кухне. Особенно удаются пицца и паста. Делюсь только проверенными рецептами!</textarea>
                     </div>
-                    
                     <div class="form-group">
                         <label for="user-city">Город</label>
                         <input type="text" id="user-city" class="form-control" value="Санкт-Петербург">
                     </div>
-                    
                     <div class="form-group">
                         <label for="favorite-cuisine">Любимая кухня</label>
                         <input type="text" id="favorite-cuisine" class="form-control" value="Итальянская, Азиатская">
                     </div>
-                    
                     <div class="form-group">
                         <label>Уведомления</label>
-                        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                            <label style="display: flex; align-items: center; gap: 5px;">
+                        <div class="flex flex-wrap gap-20">
+                            <label class="checkbox-label">
                                 <input type="checkbox" checked> О новых комментариях
                             </label>
-                            <label style="display: flex; align-items: center; gap: 5px;">
+                            <label class="checkbox-label">
                                 <input type="checkbox" checked> О новых подписчиках
                             </label>
-                            <label style="display: flex; align-items: center; gap: 5px;">
+                            <label class="checkbox-label">
                                 <input type="checkbox"> О новых лайках
                             </label>
                         </div>
                     </div>
-                    
                     <button type="submit" class="btn">Сохранить изменения</button>
                 </form>
             </div>
-            
-            <div class="card" style="margin-top: 30px;">
+            <div class="card mt-30">
                 <h3>Безопасность</h3>
                 <form onsubmit="alert('Демо-режим: пароль изменен'); return false;">
                     <div class="form-group">
                         <label for="current-password">Текущий пароль</label>
                         <input type="password" id="current-password" class="form-control" placeholder="••••••••">
                     </div>
-                    
                     <div class="form-group">
                         <label for="new-password">Новый пароль</label>
                         <input type="password" id="new-password" class="form-control" placeholder="••••••••">
                     </div>
-                    
                     <div class="form-group">
                         <label for="confirm-password">Подтвердите пароль</label>
                         <input type="password" id="confirm-password" class="form-control" placeholder="••••••••">
                     </div>
-                    
                     <button type="submit" class="btn">Изменить пароль</button>
                 </form>
             </div>
         </div>
 
-        <!-- Кнопка редактирования профиля -->
-        <div style="text-align: center; margin-top: 40px;">
+        <div class="text-center mt-40">
             <a href="#" class="btn-edit" onclick="switchTab('settings'); return false;">✏️ Редактировать профиль</a>
         </div>
     </main>
@@ -496,44 +386,32 @@
     </footer>
 
     <script>
-        // Выпадающее меню по клику
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
         });
 
-        // Переключение вкладок
         function switchTab(tabName) {
-            // Скрываем все вкладки
             document.getElementById('posts-tab').style.display = 'none';
             document.getElementById('comments-tab').style.display = 'none';
             document.getElementById('liked-tab').style.display = 'none';
             document.getElementById('subscribers-tab').style.display = 'none';
             document.getElementById('settings-tab').style.display = 'none';
-            
-            // Убираем active класс у всех вкладок
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Показываем выбранную вкладку
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             if (tabName === 'posts') {
                 document.getElementById('posts-tab').style.display = 'block';
                 document.querySelector('.tab:nth-child(1)').classList.add('active');
@@ -552,15 +430,12 @@
             }
         }
 
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const username = localStorage.getItem('username') || 'Елена_повар';
             const firstLetter = username.charAt(0).toUpperCase();
-            
             authBtn.innerHTML = `<span class="user-avatar">${firstLetter}</span> ${username} <span class="demo-badge">DEMO</span>`;
         }
-
         updateAuthButton();
     </script>
 </body>

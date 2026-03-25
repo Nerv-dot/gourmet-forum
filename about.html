@@ -10,11 +10,9 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
+                <a href="index.html" class="logo"> Форум гурманов</a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -42,10 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <a href="about.html" class="nav-link">О проекте</a>
+                    <a href="about.html" class="nav-link active">О проекте</a>
                 </nav>
-                
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
                 </div>
@@ -55,42 +51,35 @@
 
     <main class="container">
         <h1>О проекте</h1>
-        
         <div class="about-section">
             <div class="about-card">
                 <h2>🍴 Наша миссия</h2>
                 <p>Мы создаем место, где каждый рецепт становится вашим. Никакого копипаста — только живые фотографии, личный опыт и честные отзывы.</p>
             </div>
-            
             <div class="about-card">
                 <h2>👨‍🍳 Кто мы</h2>
                 <p>Форум гурманов — это сообщество людей, которые любят готовить и делиться своими кулинарными открытиями. Наши модераторы — профессиональные повара, которые помогают участникам советами и следят за качеством контента.</p>
             </div>
-            
             <div class="about-card">
                 <h2>💡 Наши ценности</h2>
-                <ul style="margin-left: 20px; line-height: 1.8;">
+                <ul>
                     <li><strong>Честность:</strong> только проверенные рецепты от реальных людей</li>
                     <li><strong>Качество:</strong> каждый пост проходит модерацию</li>
                     <li><strong>Сообщество:</strong> мы ценим живое общение и взаимопомощь</li>
                     <li><strong>Доступность:</strong> форум открыт для всех, независимо от уровня мастерства</li>
                 </ul>
             </div>
-            
             <div class="about-card">
                 <h2>📖 Наша история</h2>
                 <p>Мы только начинаем, и это наше преимущество. Здесь нет тонны непроверенного контента. Каждый пост, который вы видите, создан с заботой о качестве. Присоединяйтесь к нам, и вместе мы сделаем этот форум лучшим местом для гурманов!</p>
             </div>
-            
             <div class="about-quote">
                 "Представьте: вы заходите на форум и видите не бездушные тексты, а живые обсуждения. Здесь можно спросить совет у той самой бабушки, чей пирог уже хвалят в комментариях, или обсудить новый ресторан с теми, кто там действительно был."
             </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
+            <div class="text-center mt-40">
                 <a href="login.html?tab=register" class="hero-cta">🍳 Присоединиться к сообществу</a>
             </div>
-            
-            <div class="echo-phrase" style="margin-top: 40px;">
+            <div class="echo-phrase mt-40">
                 Форум гурманов — где каждый рецепт становится вашим.
             </div>
         </div>
@@ -103,35 +92,28 @@
     </footer>
 
     <script>
-        // Выпадающее меню
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
         });
-
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             const username = localStorage.getItem('username') || 'Елена_повар';
-
             if (isLoggedIn) {
                 authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
                 authBtn.href = 'profile.html';
@@ -142,7 +124,6 @@
                 authBtn.classList.remove('user-profile-btn');
             }
         }
-
         updateAuthButton();
     </script>
 </body>

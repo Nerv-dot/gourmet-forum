@@ -11,10 +11,8 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -42,10 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    
                     <a href="about.html" class="nav-link">О проекте</a>
                 </nav>
-                
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
                 </div>
@@ -54,43 +50,39 @@
     </header>
 
     <main class="container">
-        <!-- Хлебные крошки -->
-        <div style="margin-bottom: 20px; color: #7f8c8d;" id="breadcrumbs">
-            <a href="index.html" style="color: #7f8c8d;">Главная</a> / 
-            <a href="topics.html" id="categoryLink" style="color: #7f8c8d;">Рецепты</a> / 
+        <div class="breadcrumbs" id="breadcrumbs">
+            <a href="index.html">Главная</a> /
+            <a href="topics.html" id="categoryLink">Рецепты</a> /
             <span id="postTitle">Бабушкина пицца на тонком тесте</span>
         </div>
 
-        <!-- Основной пост -->
         <div class="post-container" id="postContainer">
-            <div class="post-header">
+            <div class="flex justify-between align-start flex-wrap gap-15 mb-20">
                 <h1 class="post-title-main" id="postMainTitle">🍕 Бабушкина пицца на тонком тесте</h1>
                 <div id="postStatus" class="status-published">✓ Опубликовано</div>
             </div>
-            
-            <div class="post-info">
+
+            <div class="flex justify-between flex-wrap gap-15 mb-20 post-meta">
                 <div>
-                    <span>Автор: <a href="profile.html" id="postAuthor" style="color: #e67e22;">Елена_повар</a></span>
+                    <span>Автор: <a href="profile.html" id="postAuthor" class="post-category-link">Елена_повар</a></span>
                     <span> • </span>
                     <span id="postDate">2 дня назад</span>
                     <span> • </span>
-                    <span>Категория: <a href="topics.html" id="postCategory" style="color: #e67e22;">Рецепты</a></span>
+                    <span>Категория: <a href="topics.html" id="postCategory" class="post-category-link">Рецепты</a></span>
                 </div>
-                <div style="display: flex; gap: 20px;">
+                <div class="flex gap-20">
                     <span class="likes" id="postLikes">❤️ 24</span>
                 </div>
             </div>
-            
-            <!-- Теги поста -->
-            <div id="postTags" style="margin-bottom: 20px;">
+
+            <div id="postTags" class="mb-20">
                 <a href="tag.html" class="tag">#пицца</a>
                 <a href="tag.html" class="tag">#итальянская</a>
                 <a href="tag.html" class="tag">#тесто</a>
                 <a href="tag.html" class="tag">#выпечка</a>
             </div>
-            
-            <!-- Содержание поста -->
-            <div id="postContent" class="post-content">
+
+            <div id="postContent" class="post-content mb-30">
                 <h3>Ингредиенты:</h3>
                 <ul>
                     <li>Мука - 300 г</li>
@@ -100,7 +92,6 @@
                     <li>Сахар - 1 ч.л.</li>
                     <li>Дрожжи сухие - 5 г</li>
                 </ul>
-
                 <h3>Приготовление:</h3>
                 <p>1. Смешайте муку, соль, сахар и дрожжи.</p>
                 <p>2. Добавьте теплую воду и масло, замесите тесто.</p>
@@ -109,32 +100,22 @@
                 <p>5. Выпекайте 15 минут при 220°C.</p>
                 <p>Совет: для хрустящей корочки смажьте края оливковым маслом перед выпечкой.</p>
             </div>
-            
-            <!-- Кнопки взаимодействия -->
+
             <div class="post-actions">
                 <button class="action-btn" id="likeButton">❤️ Поставить лайк</button>
                 <button class="action-btn" id="saveButton">🔖 Сохранить</button>
                 <button class="action-btn" id="shareButton">📤 Поделиться</button>
-                
-                <!-- Кнопки для автора поста -->
-                <div style="margin-left: auto; display: none;" id="authorButtons">
+                <div class="author-buttons" id="authorButtons">
                     <a href="edit-post.html" class="action-btn">✏️ Редактировать</a>
-                    <a href="#" class="action-btn" style="background: #e74c3c;" id="deletePost">🗑️ Удалить</a>
+                    <a href="#" class="action-btn delete-btn" id="deletePost">🗑️ Удалить</a>
                 </div>
             </div>
         </div>
 
-        <!-- Блок комментариев -->
         <div class="comments-section" id="commentsSection">
-            <h3 style="margin-bottom: 20px;">Комментарии <span id="commentsCount">(12)</span></h3>
-            
-            <!-- Список комментариев -->
-            <div class="comments-list" id="commentsList">
-                <!-- Комментарии будут загружаться сюда -->
-            </div>
-            
-            <!-- Форма добавления комментария (для авторизованных) -->
-            <div id="commentFormContainer" style="margin-top: 30px;">
+            <h3 class="mb-20">Комментарии <span id="commentsCount">(12)</span></h3>
+            <div class="comments-list" id="commentsList"></div>
+            <div id="commentFormContainer" class="mt-30">
                 <h4>Добавить комментарий</h4>
                 <form id="commentForm">
                     <div class="form-group">
@@ -143,19 +124,14 @@
                     <button type="submit" class="btn">Отправить</button>
                 </form>
             </div>
-            
-            <!-- Сообщение для неавторизованных -->
-            <div id="loginToComment" style="margin-top: 30px; text-align: center; padding: 20px; background: #f8f5f0; border-radius: 5px; display: none;">
-                <p>Чтобы оставлять комментарии, <a href="login.html" style="color: #e67e22;">войдите</a> или <a href="login.html" style="color: #e67e22;">зарегистрируйтесь</a>.</p>
+            <div id="loginToComment" class="login-message mt-30 text-center">
+                <p>Чтобы оставлять комментарии, <a href="login.html">войдите</a> или <a href="login.html">зарегистрируйтесь</a>.</p>
             </div>
         </div>
 
-        <!-- Похожие посты -->
         <div class="related-posts" id="relatedPosts">
             <h3>Похожие посты</h3>
-            <div class="related-grid" id="relatedList">
-                <!-- Похожие посты будут загружаться сюда -->
-            </div>
+            <div class="related-grid mt-20" id="relatedList"></div>
         </div>
     </main>
 
@@ -165,32 +141,26 @@
         </div>
     </footer>
 
-    <!-- Шаблон комментария -->
     <template id="commentTemplate">
         <div class="comment-item" data-comment-id="">
             <div class="comment-header">
                 <div>
-                    <strong><a href="profile.html" class="comment-author" style="color: #e67e22; text-decoration: none;"></a></strong>
-                    <span class="comment-date" style="margin-left: 10px; color: #7f8c8d;"></span>
+                    <strong><a href="profile.html" class="comment-author"></a></strong>
+                    <span class="comment-date"></span>
                 </div>
-                <div>
-                    <span class="comment-likes">❤️ 0</span>
-                </div>
+                <div><span class="comment-likes">❤️ 0</span></div>
             </div>
             <p class="comment-body"></p>
-            <div class="comment-footer">
-                <div class="comment-actions">
-                    <button class="comment-like-btn">❤️ Ответить</button>
-                    <button class="comment-reply-btn">💬 Ответить</button>
-                </div>
+            <div class="flex gap-15 mt-10">
+                <button class="comment-likes-btn">❤️ Ответить</button>
+                <button class="comment-reply-btn">💬 Ответить</button>
             </div>
         </div>
     </template>
 
-    <!-- Шаблон похожего поста -->
     <template id="relatedTemplate">
         <div class="related-item">
-            <h4 style="margin-bottom: 10px;"><a href="topic.html" class="related-title" style="text-decoration: none; color: #2c3e50;"></a></h4>
+            <h4><a href="topic.html" class="related-title"></a></h4>
             <div class="related-meta">
                 <span class="related-likes">❤️ 0</span>
                 <span class="related-comments">💬 0</span>
@@ -199,56 +169,33 @@
     </template>
 
     <script>
-        // Выпадающее меню по клику
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
         });
 
-        // ID текущего поста (будет из URL)
         let currentPostId = 1;
         let isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
         let currentUserId = null;
 
-        // Моковые данные поста
         const mockPost = {
             id: 1,
             title: '🍕 Бабушкина пицца на тонком тесте',
-            content: `
-                <h3>Ингредиенты:</h3>
-                <ul>
-                    <li>Мука - 300 г</li>
-                    <li>Вода теплая - 180 мл</li>
-                    <li>Оливковое масло - 2 ст.л.</li>
-                    <li>Соль - 1 ч.л.</li>
-                    <li>Сахар - 1 ч.л.</li>
-                    <li>Дрожжи сухие - 5 г</li>
-                </ul>
-                <h3>Приготовление:</h3>
-                <p>1. Смешайте муку, соль, сахар и дрожжи.</p>
-                <p>2. Добавьте теплую воду и масло, замесите тесто.</p>
-                <p>3. Оставьте на 1 час в теплом месте.</p>
-                <p>4. Раскатайте тонко, выложите начинку.</p>
-                <p>5. Выпекайте 15 минут при 220°C.</p>
-                <p>Совет: для хрустящей корочки смажьте края оливковым маслом перед выпечкой.</p>
-            `,
+            content: `<h3>Ингредиенты:</h3><ul><li>Мука - 300 г</li><li>Вода теплая - 180 мл</li><li>Оливковое масло - 2 ст.л.</li><li>Соль - 1 ч.л.</li><li>Сахар - 1 ч.л.</li><li>Дрожжи сухие - 5 г</li></ul><h3>Приготовление:</h3><p>1. Смешайте муку, соль, сахар и дрожжи.</p><p>2. Добавьте теплую воду и масло, замесите тесто.</p><p>3. Оставьте на 1 час в теплом месте.</p><p>4. Раскатайте тонко, выложите начинку.</p><p>5. Выпекайте 15 минут при 220°C.</p><p>Совет: для хрустящей корочки смажьте края оливковым маслом перед выпечкой.</p>`,
             author: 'Елена_повар',
             authorId: 1,
             date: '2 дня назад',
@@ -260,72 +207,18 @@
             commentsCount: 12
         };
 
-        // Моковые комментарии
         const mockComments = [
-            {
-                id: 1,
-                author: 'Антон_шеф',
-                authorId: 5,
-                date: 'вчера в 15:23',
-                body: 'Спасибо за рецепт! Тесто действительно получилось очень тонким и хрустящим. Добавил еще щепотку итальянских трав — получилось бомбически!',
-                likes: 5
-            },
-            {
-                id: 2,
-                author: 'Мама_Оля',
-                authorId: 6,
-                date: 'вчера в 18:40',
-                body: 'А можно ли заменить обычную муку на цельнозерновую? Кто-нибудь пробовал?',
-                likes: 2
-            },
-            {
-                id: 3,
-                author: 'Елена_повар',
-                authorId: 1,
-                date: 'вчера в 19:15',
-                body: 'Мама_Оля, пробовала. Получается плотнее и менее хрустящее. Лучше смешать 50/50 с обычной мукой.',
-                likes: 8
-            },
-            {
-                id: 4,
-                author: 'Поварёнок',
-                authorId: 7,
-                date: '5 часов назад',
-                body: 'Сегодня попробую! Спасибо за подробный рецепт.',
-                likes: 1
-            }
+            { id: 1, author: 'Антон_шеф', authorId: 5, date: 'вчера в 15:23', body: 'Спасибо за рецепт! Тесто действительно получилось очень тонким и хрустящим. Добавил еще щепотку итальянских трав — получилось бомбически!', likes: 5 },
+            { id: 2, author: 'Мама_Оля', authorId: 6, date: 'вчера в 18:40', body: 'А можно ли заменить обычную муку на цельнозерновую? Кто-нибудь пробовал?', likes: 2 },
+            { id: 3, author: 'Елена_повар', authorId: 1, date: 'вчера в 19:15', body: 'Мама_Оля, пробовала. Получается плотнее и менее хрустящее. Лучше смешать 50/50 с обычной мукой.', likes: 8 },
+            { id: 4, author: 'Поварёнок', authorId: 7, date: '5 часов назад', body: 'Сегодня попробую! Спасибо за подробный рецепт.', likes: 1 }
         ];
 
-        // Моковые похожие посты
         const mockRelated = [
-            {
-                id: 2,
-                title: '🥗 Греческий салат: секретный ингредиент',
-                likes: 17,
-                comments: 8
-            },
-            {
-                id: 4,
-                title: '🥘 Паста карбонара без сливок',
-                likes: 47,
-                comments: 31
-            },
-            {
-                id: 5,
-                title: '🍰 Идеальный бисквит',
-                likes: 32,
-                comments: 15
-            }
+            { id: 2, title: '🥗 Греческий салат: секретный ингредиент', likes: 17, comments: 8 },
+            { id: 4, title: '🥘 Паста карбонара без сливок', likes: 47, comments: 31 },
+            { id: 5, title: '🍰 Идеальный бисквит', likes: 32, comments: 15 }
         ];
-
-        document.addEventListener('DOMContentLoaded', function() {
-            loadPost();
-            loadComments();
-            loadRelatedPosts();
-            checkAuth();
-            setupEventListeners();
-            updateAuthButton();
-        });
 
         function loadPost() {
             document.getElementById('postMainTitle').textContent = mockPost.title;
@@ -339,7 +232,6 @@
             document.getElementById('categoryLink').textContent = mockPost.category;
             document.getElementById('categoryLink').href = `topics.html?category=${mockPost.categoryId}`;
             document.getElementById('postLikes').innerHTML = `❤️ ${mockPost.likes}`;
-            
             const statusElement = document.getElementById('postStatus');
             if (mockPost.status === 'published') {
                 statusElement.className = 'status-published';
@@ -348,7 +240,6 @@
                 statusElement.className = 'status-draft';
                 statusElement.innerHTML = '✎ Черновик';
             }
-            
             const tagsContainer = document.getElementById('postTags');
             tagsContainer.innerHTML = '';
             mockPost.tags.forEach(tag => {
@@ -363,78 +254,52 @@
         function loadComments() {
             const commentsList = document.getElementById('commentsList');
             commentsList.innerHTML = '';
-            
-            mockComments.forEach(comment => {
-                const commentElement = createCommentElement(comment);
-                commentsList.appendChild(commentElement);
-            });
-            
+            mockComments.forEach(comment => commentsList.appendChild(createCommentElement(comment)));
             document.getElementById('commentsCount').textContent = `(${mockComments.length})`;
         }
 
         function createCommentElement(comment) {
             const template = document.getElementById('commentTemplate');
-            const commentElement = template.content.cloneNode(true).querySelector('.comment-item');
-            
-            commentElement.dataset.commentId = comment.id;
-            
-            const authorLink = commentElement.querySelector('.comment-author');
+            const el = template.content.cloneNode(true).querySelector('.comment-item');
+            el.dataset.commentId = comment.id;
+            const authorLink = el.querySelector('.comment-author');
             authorLink.textContent = comment.author;
             authorLink.href = `profile.html?id=${comment.authorId}`;
-            
-            commentElement.querySelector('.comment-date').textContent = comment.date;
-            commentElement.querySelector('.comment-body').textContent = comment.body;
-            commentElement.querySelector('.comment-likes').innerHTML = `❤️ ${comment.likes}`;
-            
-            return commentElement;
+            el.querySelector('.comment-date').textContent = comment.date;
+            el.querySelector('.comment-body').textContent = comment.body;
+            el.querySelector('.comment-likes').innerHTML = `❤️ ${comment.likes}`;
+            return el;
         }
 
         function loadRelatedPosts() {
             const relatedList = document.getElementById('relatedList');
             relatedList.innerHTML = '';
-            
             mockRelated.forEach(related => {
                 const template = document.getElementById('relatedTemplate');
-                const relatedElement = template.content.cloneNode(true).querySelector('.related-item');
-                
-                const titleLink = relatedElement.querySelector('.related-title');
+                const el = template.content.cloneNode(true).querySelector('.related-item');
+                const titleLink = el.querySelector('.related-title');
                 titleLink.textContent = related.title;
                 titleLink.href = `topic.html?id=${related.id}`;
-                
-                relatedElement.querySelector('.related-likes').innerHTML = `❤️ ${related.likes}`;
-                relatedElement.querySelector('.related-comments').innerHTML = `💬 ${related.comments}`;
-                
-                relatedList.appendChild(relatedElement);
+                el.querySelector('.related-likes').innerHTML = `❤️ ${related.likes}`;
+                el.querySelector('.related-comments').innerHTML = `💬 ${related.comments}`;
+                relatedList.appendChild(el);
             });
         }
 
         function setupEventListeners() {
             document.getElementById('likeButton').addEventListener('click', function() {
-                if (!isLoggedIn) {
-                    alert('Чтобы ставить лайки, нужно войти');
-                    window.location.href = 'login.html';
-                    return;
-                }
-                
+                if (!isLoggedIn) { alert('Чтобы ставить лайки, нужно войти'); window.location.href = 'login.html'; return; }
                 const likesSpan = document.getElementById('postLikes');
                 let currentLikes = parseInt(likesSpan.textContent.match(/\d+/)[0]);
-                currentLikes++;
-                likesSpan.innerHTML = `❤️ ${currentLikes}`;
+                likesSpan.innerHTML = `❤️ ${currentLikes + 1}`;
             });
-            
             document.getElementById('saveButton').addEventListener('click', function() {
-                if (!isLoggedIn) {
-                    alert('Чтобы сохранять посты, нужно войти');
-                    window.location.href = 'login.html';
-                    return;
-                }
+                if (!isLoggedIn) { alert('Чтобы сохранять посты, нужно войти'); window.location.href = 'login.html'; return; }
                 alert('Пост сохранен в закладки');
             });
-            
             document.getElementById('shareButton').addEventListener('click', function() {
                 prompt('Скопируйте ссылку на пост:', window.location.href);
             });
-            
             document.getElementById('deletePost').addEventListener('click', function(e) {
                 e.preventDefault();
                 if (confirm('Вы уверены, что хотите удалить этот пост?')) {
@@ -442,16 +307,9 @@
                     window.location.href = 'profile.html';
                 }
             });
-            
             document.getElementById('commentForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                if (!isLoggedIn) {
-                    alert('Чтобы оставлять комментарии, нужно войти');
-                    window.location.href = 'login.html';
-                    return;
-                }
-                
+                if (!isLoggedIn) { alert('Чтобы оставлять комментарии, нужно войти'); window.location.href = 'login.html'; return; }
                 const commentText = document.getElementById('commentText').value;
                 if (commentText.trim()) {
                     alert('Комментарий добавлен');
@@ -461,13 +319,8 @@
         }
 
         function checkAuth() {
-            const userStatus = document.getElementById('userStatus');
-            const authLink = document.getElementById('authLink');
             const commentForm = document.getElementById('commentFormContainer');
             const loginMessage = document.getElementById('loginToComment');
-            
-            isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-            
             if (isLoggedIn) {
                 if (commentForm) commentForm.style.display = 'block';
                 if (loginMessage) loginMessage.style.display = 'none';
@@ -477,12 +330,10 @@
             }
         }
 
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             const username = localStorage.getItem('username') || 'Елена_повар';
-
             if (isLoggedIn) {
                 authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
                 authBtn.href = 'profile.html';
@@ -493,6 +344,13 @@
                 authBtn.classList.remove('user-profile-btn');
             }
         }
+
+        loadPost();
+        loadComments();
+        loadRelatedPosts();
+        checkAuth();
+        setupEventListeners();
+        updateAuthButton();
     </script>
 </body>
 </html>

@@ -11,10 +11,8 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -42,10 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    
                     <a href="about.html" class="nav-link">О проекте</a>
                 </nav>
-                
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
                 </div>
@@ -54,33 +50,29 @@
     </header>
 
     <main class="container">
-        <!-- Хлебные крошки -->
-        <div style="margin-bottom: 20px; color: #7f8c8d;">
-            <a href="index.html" style="color: #7f8c8d;">Главная</a> / 
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a> /
             <span id="categoryName">Рецепты</span>
         </div>
 
-        <!-- Информация о категории -->
-        <div class="card" style="background: #f8f5f0; margin-bottom: 30px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div class="card category-info">
+            <div class="flex justify-between align-center flex-wrap gap-15">
                 <div>
-                    <h2 id="categoryTitle" style="margin-bottom: 5px;">🍲 Рецепты</h2>
-                    <p id="categoryDescription" style="color: #2c3e50;">Делимся проверенными рецептами, спрашиваем советы, обсуждаем ингредиенты.</p>
+                    <h2 id="categoryTitle">🍲 Рецепты</h2>
+                    <p id="categoryDescription">Делимся проверенными рецептами, спрашиваем советы, обсуждаем ингредиенты.</p>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 24px; font-weight: bold; color: #e67e22;" id="postsCount">15</div>
-                    <div style="color: #7f8c8d;">постов</div>
+                <div class="text-right">
+                    <div class="posts-count" id="postsCount">15</div>
+                    <div class="posts-count-label">постов</div>
                 </div>
             </div>
         </div>
 
-        <!-- Заголовок и кнопка создания поста -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+        <div class="flex justify-between align-center flex-wrap gap-15 mb-20">
             <h1>Все посты в разделе</h1>
             <a href="new_topic.html" class="btn">➕ Новый пост</a>
         </div>
 
-        <!-- Сортировка и фильтры -->
         <div class="sort-buttons">
             <a href="#" class="sort-btn active" id="sortNew">Сначала новые</a>
             <a href="#" class="sort-btn" id="sortPopular">Популярные</a>
@@ -88,7 +80,6 @@
             <a href="#" class="sort-btn" id="sortComments">По комментариям</a>
         </div>
 
-        <!-- Фильтр по статусу (для авторизованных) -->
         <div class="status-filter">
             <span class="filter-label">Показать:</span>
             <label class="filter-radio">
@@ -102,15 +93,8 @@
             </label>
         </div>
 
-        <!-- Список постов -->
-        <div id="postsList">
-            <!-- Посты будут загружаться сюда -->
-        </div>
-
-        <!-- Пагинация -->
-        <div class="pagination" id="pagination">
-            <!-- Пагинация будет формироваться скриптом -->
-        </div>
+        <div id="postsList"></div>
+        <div id="pagination" class="pagination mt-30"></div>
     </main>
 
     <footer>
@@ -119,21 +103,17 @@
         </div>
     </footer>
 
-    <!-- Шаблон поста -->
     <template id="postTemplate">
         <div class="post-item" data-post-id="">
-            <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 15px;">
-                <div style="flex: 1;">
-                    <h3 style="margin-bottom: 5px;">
-                        <a href="topic.html" class="post-title-link"></a>
-                    </h3>
+            <div class="flex justify-between align-start flex-wrap gap-15">
+                <div class="flex-1">
+                    <h3><a href="topic.html" class="post-title-link"></a></h3>
                     <p class="post-meta">
-                        Автор: <a href="profile.html" class="post-author" style="color: #e67e22;"></a> • 
-                        <span class="post-date"></span> • 
+                        Автор: <a href="profile.html" class="post-author"></a> •
+                        <span class="post-date"></span> •
                         Статус: <span class="post-status"></span>
                     </p>
                     <p class="post-excerpt"></p>
-                    
                     <div class="post-tags"></div>
                 </div>
                 <div class="post-stats">
@@ -145,134 +125,43 @@
     </template>
 
     <script>
-        // Выпадающее меню по клику
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
         });
 
-        // Текущая категория и параметры
         let currentCategory = {
             id: 1,
             name: 'Рецепты',
             description: 'Делимся проверенными рецептами, спрашиваем советы, обсуждаем ингредиенты.',
             postsCount: 15
         };
-        
         let currentPage = 1;
         let currentSort = 'new';
         let currentStatus = 'all';
         let isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
 
-        // Моковые данные постов
         const mockPosts = [
-            {
-                id: 1,
-                title: '🍕 Бабушкина пицца на тонком тесте',
-                author: 'Елена_повар',
-                authorId: 1,
-                date: '2 дня назад',
-                status: 'published',
-                statusText: 'опубликовано',
-                statusClass: 'status-published',
-                excerpt: 'Делюсь проверенным рецептом теста, которое всегда получается хрустящим.',
-                content: 'Полный текст поста...',
-                tags: ['пицца', 'итальянская', 'тесто', 'выпечка'],
-                commentsCount: 12,
-                likesCount: 24,
-                categoryId: 1
-            },
-            {
-                id: 2,
-                title: '🥗 Греческий салат: секретный ингредиент',
-                author: 'Foodie88',
-                authorId: 2,
-                date: '5 дней назад',
-                status: 'published',
-                statusText: 'опубликовано',
-                statusClass: 'status-published',
-                excerpt: 'Все знают классический рецепт, но попробуйте добавить чуть-чуть орегано...',
-                content: 'Полный текст поста...',
-                tags: ['салат', 'греческий', 'овощи', 'сыр'],
-                commentsCount: 8,
-                likesCount: 17,
-                categoryId: 1
-            },
-            {
-                id: 3,
-                title: '🍣 Домашние роллы: эксперимент',
-                author: 'SushiLover',
-                authorId: 3,
-                date: '3 часа назад',
-                status: 'draft',
-                statusText: 'черновик',
-                statusClass: 'status-draft',
-                excerpt: 'Пробую новый рецепт риса для суши. Пока в процессе...',
-                content: 'Полный текст поста...',
-                tags: ['суши', 'роллы', 'японская'],
-                commentsCount: 2,
-                likesCount: 3,
-                categoryId: 1
-            },
-            {
-                id: 4,
-                title: '🥘 Паста карбонара без сливок',
-                author: 'ChefItaliano',
-                authorId: 4,
-                date: 'неделю назад',
-                status: 'published',
-                statusText: 'опубликовано',
-                statusClass: 'status-published',
-                excerpt: 'Настоящая итальянская карбонара делается без сливок!',
-                content: 'Полный текст поста...',
-                tags: ['паста', 'карбонара', 'итальянская'],
-                commentsCount: 31,
-                likesCount: 47,
-                categoryId: 1
-            },
-            {
-                id: 5,
-                title: '🍰 Идеальный бисквит',
-                author: 'Елена_повар',
-                authorId: 1,
-                date: '3 дня назад',
-                status: 'published',
-                statusText: 'опубликовано',
-                statusClass: 'status-published',
-                excerpt: 'Секрет пышного бисквита — правильно взбитые яйца...',
-                content: 'Полный текст поста...',
-                tags: ['десерт', 'выпечка', 'бисквит'],
-                commentsCount: 15,
-                likesCount: 32,
-                categoryId: 1
-            }
+            { id: 1, title: '🍕 Бабушкина пицца на тонком тесте', author: 'Елена_повар', authorId: 1, date: '2 дня назад', status: 'published', statusText: 'опубликовано', statusClass: 'status-published', excerpt: 'Делюсь проверенным рецептом теста, которое всегда получается хрустящим.', tags: ['пицца', 'итальянская', 'тесто', 'выпечка'], commentsCount: 12, likesCount: 24, categoryId: 1 },
+            { id: 2, title: '🥗 Греческий салат: секретный ингредиент', author: 'Foodie88', authorId: 2, date: '5 дней назад', status: 'published', statusText: 'опубликовано', statusClass: 'status-published', excerpt: 'Все знают классический рецепт, но попробуйте добавить чуть-чуть орегано...', tags: ['салат', 'греческий', 'овощи', 'сыр'], commentsCount: 8, likesCount: 17, categoryId: 1 },
+            { id: 3, title: '🍣 Домашние роллы: эксперимент', author: 'SushiLover', authorId: 3, date: '3 часа назад', status: 'draft', statusText: 'черновик', statusClass: 'status-draft', excerpt: 'Пробую новый рецепт риса для суши. Пока в процессе...', tags: ['суши', 'роллы', 'японская'], commentsCount: 2, likesCount: 3, categoryId: 1 },
+            { id: 4, title: '🥘 Паста карбонара без сливок', author: 'ChefItaliano', authorId: 4, date: 'неделю назад', status: 'published', statusText: 'опубликовано', statusClass: 'status-published', excerpt: 'Настоящая итальянская карбонара делается без сливок!', tags: ['паста', 'карбонара', 'итальянская'], commentsCount: 31, likesCount: 47, categoryId: 1 },
+            { id: 5, title: '🍰 Идеальный бисквит', author: 'Елена_повар', authorId: 1, date: '3 дня назад', status: 'published', statusText: 'опубликовано', statusClass: 'status-published', excerpt: 'Секрет пышного бисквита — правильно взбитые яйца...', tags: ['десерт', 'выпечка', 'бисквит'], commentsCount: 15, likesCount: 32, categoryId: 1 }
         ];
-
-        // Загрузка страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            loadCategoryInfo();
-            loadPosts();
-            setupSortHandlers();
-            setupStatusFilters();
-            updateAuthButton();
-        });
 
         function loadCategoryInfo() {
             document.getElementById('categoryName').textContent = currentCategory.name;
@@ -284,49 +173,29 @@
         function loadPosts() {
             const postsList = document.getElementById('postsList');
             postsList.innerHTML = '';
-            
             let filteredPosts = mockPosts.filter(post => post.categoryId === currentCategory.id);
-            
-            if (currentStatus !== 'all') {
-                filteredPosts = filteredPosts.filter(post => post.status === currentStatus);
-            }
-            
+            if (currentStatus !== 'all') filteredPosts = filteredPosts.filter(post => post.status === currentStatus);
             filteredPosts = sortPosts(filteredPosts, currentSort);
-            
-            filteredPosts.forEach(post => {
-                const postElement = createPostElement(post);
-                postsList.appendChild(postElement);
-            });
-            
+            filteredPosts.forEach(post => postsList.appendChild(createPostElement(post)));
             updatePagination(filteredPosts.length);
         }
 
         function createPostElement(post) {
             const template = document.getElementById('postTemplate');
             const postElement = template.content.cloneNode(true).querySelector('.post-item');
-            
             postElement.dataset.postId = post.id;
-            
             const titleLink = postElement.querySelector('.post-title-link');
             titleLink.textContent = post.title;
             titleLink.href = `topic.html?id=${post.id}`;
-            
             const authorLink = postElement.querySelector('.post-author');
             authorLink.textContent = post.author;
             authorLink.href = `profile.html?id=${post.authorId}`;
-            
             postElement.querySelector('.post-date').textContent = post.date;
-            
             const statusSpan = postElement.querySelector('.post-status');
             statusSpan.textContent = post.statusText;
             statusSpan.className = post.statusClass;
-            
-            if (post.status === 'draft' && !isLoggedIn) {
-                postElement.style.display = 'none';
-            }
-            
+            if (post.status === 'draft' && !isLoggedIn) postElement.style.display = 'none';
             postElement.querySelector('.post-excerpt').textContent = post.excerpt;
-            
             const tagsContainer = postElement.querySelector('.post-tags');
             post.tags.forEach(tag => {
                 const tagLink = document.createElement('a');
@@ -335,91 +204,49 @@
                 tagLink.textContent = `#${tag}`;
                 tagsContainer.appendChild(tagLink);
             });
-            
             postElement.querySelector('.post-comments').innerHTML = `💬 ${post.commentsCount}`;
             postElement.querySelector('.post-likes').innerHTML = `❤️ ${post.likesCount}`;
-            
             return postElement;
         }
 
         function sortPosts(posts, sortType) {
             const sorted = [...posts];
-            
-            switch(sortType) {
-                case 'new':
-                    return sorted;
-                case 'popular':
-                    return sorted.sort((a, b) => (b.commentsCount + b.likesCount) - (a.commentsCount + a.likesCount));
-                case 'likes':
-                    return sorted.sort((a, b) => b.likesCount - a.likesCount);
-                case 'comments':
-                    return sorted.sort((a, b) => b.commentsCount - a.commentsCount);
-                default:
-                    return sorted;
-            }
+            if (sortType === 'popular') return sorted.sort((a, b) => (b.commentsCount + b.likesCount) - (a.commentsCount + a.likesCount));
+            if (sortType === 'likes') return sorted.sort((a, b) => b.likesCount - a.likesCount);
+            if (sortType === 'comments') return sorted.sort((a, b) => b.commentsCount - a.commentsCount);
+            return sorted;
         }
 
         function setupSortHandlers() {
-            document.getElementById('sortNew').addEventListener('click', function(e) {
-                e.preventDefault();
-                updateSort('new', this);
-            });
-            
-            document.getElementById('sortPopular').addEventListener('click', function(e) {
-                e.preventDefault();
-                updateSort('popular', this);
-            });
-            
-            document.getElementById('sortLikes').addEventListener('click', function(e) {
-                e.preventDefault();
-                updateSort('likes', this);
-            });
-            
-            document.getElementById('sortComments').addEventListener('click', function(e) {
-                e.preventDefault();
-                updateSort('comments', this);
-            });
+            document.getElementById('sortNew').addEventListener('click', e => { e.preventDefault(); updateSort('new', e.target); });
+            document.getElementById('sortPopular').addEventListener('click', e => { e.preventDefault(); updateSort('popular', e.target); });
+            document.getElementById('sortLikes').addEventListener('click', e => { e.preventDefault(); updateSort('likes', e.target); });
+            document.getElementById('sortComments').addEventListener('click', e => { e.preventDefault(); updateSort('comments', e.target); });
         }
 
         function updateSort(sortType, element) {
             currentSort = sortType;
-            
-            document.querySelectorAll('.sort-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
+            document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
             loadPosts();
         }
 
         function setupStatusFilters() {
             document.querySelectorAll('input[name="status"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    currentStatus = this.value;
-                    loadPosts();
-                });
+                radio.addEventListener('change', function() { currentStatus = this.value; loadPosts(); });
             });
         }
 
         function updatePagination(totalPosts) {
             const pagination = document.getElementById('pagination');
             const totalPages = Math.ceil(totalPosts / 10);
-            
-            if (totalPages <= 1) {
-                pagination.innerHTML = '';
-                return;
-            }
-            
-            let paginationHtml = '<a href="#" class="page-link prev-page">←</a>';
-            
+            if (totalPages <= 1) { pagination.innerHTML = ''; return; }
+            let html = '<a href="#" class="page-link prev-page">←</a>';
             for (let i = 1; i <= totalPages; i++) {
-                const activeClass = i === currentPage ? 'active' : '';
-                paginationHtml += `<a href="#" class="page-link page-num ${activeClass}" data-page="${i}">${i}</a>`;
+                html += `<a href="#" class="page-link page-num ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a>`;
             }
-            
-            paginationHtml += '<a href="#" class="page-link next-page">→</a>';
-            pagination.innerHTML = paginationHtml;
-            
+            html += '<a href="#" class="page-link next-page">→</a>';
+            pagination.innerHTML = html;
             document.querySelectorAll('.page-num').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -429,12 +256,10 @@
             });
         }
 
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             const username = localStorage.getItem('username') || 'Елена_повар';
-
             if (isLoggedIn) {
                 authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
                 authBtn.href = 'profile.html';
@@ -445,6 +270,12 @@
                 authBtn.classList.remove('user-profile-btn');
             }
         }
+
+        loadCategoryInfo();
+        loadPosts();
+        setupSortHandlers();
+        setupStatusFilters();
+        updateAuthButton();
     </script>
 </body>
 </html>

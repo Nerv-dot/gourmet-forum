@@ -11,10 +11,8 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -42,10 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    
                     <a href="about.html" class="nav-link">О проекте</a>
                 </nav>
-                
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
                 </div>
@@ -55,37 +51,17 @@
 
     <main class="container">
         <h1>Все теги</h1>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 40px 0;">
-            <a href="tag.html?id=1" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #пицца (12)
-            </a>
-            <a href="tag.html?id=2" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #паста (8)
-            </a>
-            <a href="tag.html?id=3" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #десерт (15)
-            </a>
-            <a href="tag.html?id=4" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #суп (7)
-            </a>
-            <a href="tag.html?id=5" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #салат (10)
-            </a>
-            <a href="tag.html?id=6" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #завтрак (6)
-            </a>
-            <a href="tag.html?id=7" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #итальянская (14)
-            </a>
-            <a href="tag.html?id=8" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #японская (5)
-            </a>
-            <a href="tag.html?id=9" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #выпечка (11)
-            </a>
-            <a href="tag.html?id=10" style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #2c3e50;">
-                #вегетарианское (4)
-            </a>
+        <div class="tags-cloud">
+            <a href="tag.html?id=1" class="tag-cloud-item">#пицца (12)</a>
+            <a href="tag.html?id=2" class="tag-cloud-item">#паста (8)</a>
+            <a href="tag.html?id=3" class="tag-cloud-item">#десерт (15)</a>
+            <a href="tag.html?id=4" class="tag-cloud-item">#суп (7)</a>
+            <a href="tag.html?id=5" class="tag-cloud-item">#салат (10)</a>
+            <a href="tag.html?id=6" class="tag-cloud-item">#завтрак (6)</a>
+            <a href="tag.html?id=7" class="tag-cloud-item">#итальянская (14)</a>
+            <a href="tag.html?id=8" class="tag-cloud-item">#японская (5)</a>
+            <a href="tag.html?id=9" class="tag-cloud-item">#выпечка (11)</a>
+            <a href="tag.html?id=10" class="tag-cloud-item">#вегетарианское (4)</a>
         </div>
     </main>
 
@@ -96,35 +72,28 @@
     </footer>
 
     <script>
-        // Выпадающее меню по клику
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
         });
-
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             const username = localStorage.getItem('username') || 'Елена_повар';
-
             if (isLoggedIn) {
                 authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
                 authBtn.href = 'profile.html';
@@ -135,7 +104,6 @@
                 authBtn.classList.remove('user-profile-btn');
             }
         }
-
         updateAuthButton();
     </script>
 </body>

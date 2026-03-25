@@ -5,75 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новый пост - Форум гурманов</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Временные стили для заглушки */
-        .demo-notice {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .demo-notice svg {
-            width: 24px;
-            height: 24px;
-            fill: #856404;
-        }
-        
-        /* Стили для выбора подкатегории */
-        .subcategory-group {
-            margin-top: 15px;
-            padding: 15px;
-            background: #f8f5f0;
-            border-radius: 8px;
-            border-left: 3px solid #e67e22;
-        }
-        
-        .subcategory-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #e67e22;
-        }
-        
-        .subcategory-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .subcategory-option {
-            flex: 1 1 calc(50% - 15px);
-            min-width: 200px;
-        }
-        
-        .subcategory-option input[type="radio"] {
-            margin-right: 8px;
-        }
-        
-        .subcategory-option label {
-            display: inline;
-            font-weight: normal;
-            color: #2c3e50;
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-content">
-                <!-- Логотип слева -->
                 <a href="index.html" class="logo">🍴 Форум гурманов</a>
-                
-                <!-- Навигация по центру -->
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Главная</a>
-                    
-                    <!-- Выпадающее меню -->
                     <div class="dropdown">
                         <button class="nav-link dropbtn" id="menuBtn">Меню</button>
                         <div class="dropdown-content" id="menuDropdown">
@@ -101,11 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    
                     <a href="about.html" class="nav-link">О проекте</a>
                 </nav>
-                
-                <!-- Кнопка входа/профиля справа -->
                 <div class="auth-section">
                     <a href="login.html" class="auth-btn" id="authBtn">Вход</a>
                 </div>
@@ -114,14 +50,12 @@
     </header>
 
     <main class="container">
-        <!-- Хлебные крошки -->
-        <div style="margin-bottom: 20px; color: #7f8c8d;">
-            <a href="index.html" style="color: #7f8c8d;">Главная</a> / 
-            <a href="profile.html" style="color: #7f8c8d;">Профиль</a> / 
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a> /
+            <a href="profile.html">Профиль</a> /
             <span>Новый пост</span>
         </div>
 
-        <!-- Заглушка для демонстрации -->
         <div class="demo-notice">
             <svg viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
@@ -136,13 +70,11 @@
 
         <div class="new-post-form">
             <form id="newPostForm" onsubmit="event.preventDefault(); alert('Демо-режим: форма не отправляется');">
-                <!-- Заголовок -->
                 <div class="form-group">
                     <label for="title">Заголовок <span class="required-star">*</span></label>
                     <input type="text" id="title" class="form-control" placeholder="Например: Бабушкин рецепт борща" value="Тестовый заголовок">
                 </div>
 
-                <!-- Категория -->
                 <div class="form-group">
                     <label for="category">Категория <span class="required-star">*</span></label>
                     <select id="category" class="form-control" onchange="showSubcategories()">
@@ -153,7 +85,6 @@
                     </select>
                 </div>
 
-                <!-- Подкатегории для Рецептов -->
                 <div id="subcategory-recipes" class="subcategory-group">
                     <label>Выберите подкатегорию:</label>
                     <div class="subcategory-options">
@@ -180,7 +111,6 @@
                     </div>
                 </div>
 
-                <!-- Подкатегории для Обсуждений -->
                 <div id="subcategory-discussions" class="subcategory-group" style="display: none;">
                     <label>Выберите подкатегорию:</label>
                     <div class="subcategory-options">
@@ -203,7 +133,6 @@
                     </div>
                 </div>
 
-                <!-- Подкатегории для Вопрос-ответ -->
                 <div id="subcategory-qa" class="subcategory-group" style="display: none;">
                     <label>Выберите подкатегорию:</label>
                     <div class="subcategory-options">
@@ -226,21 +155,18 @@
                     </div>
                 </div>
 
-                <!-- Содержание -->
                 <div class="form-group">
                     <label for="content">Содержание <span class="required-star">*</span></label>
                     <textarea id="content" class="form-control" rows="8" placeholder="Опишите рецепт, задайте вопрос или поделитесь впечатлениями...">Это тестовое содержание поста. Здесь будет описание рецепта или вопрос.</textarea>
                     <div class="hint">Можно использовать обычный текст. Поддерживаются ссылки и эмодзи 😊</div>
                 </div>
 
-                <!-- Теги -->
-                <div class="form-group tags-input">
+                <div class="form-group">
                     <label for="tags">Теги</label>
                     <input type="text" id="tags" class="form-control" placeholder="например: пицца, тесто, итальянская кухня" value="тест, демо, заглушка">
                     <div class="hint">Введите теги через запятую. Они помогут другим найти ваш пост.</div>
                 </div>
 
-                <!-- Примеры тегов -->
                 <div class="popular-tags">
                     <span>Популярные теги:</span>
                     <a href="#" class="tag-link" onclick="addTag('#пицца'); return false;">#пицца</a>
@@ -251,7 +177,6 @@
                     <a href="#" class="tag-link" onclick="addTag('#завтрак'); return false;">#завтрак</a>
                 </div>
 
-                <!-- Статус -->
                 <div class="form-group">
                     <label for="status">Статус</label>
                     <select id="status" class="form-control">
@@ -260,7 +185,6 @@
                     </select>
                 </div>
 
-                <!-- Кнопки -->
                 <div class="form-buttons">
                     <button type="submit" class="btn" onclick="showSelectedData(); return false;">Опубликовать</button>
                     <button type="button" class="btn-secondary" onclick="alert('Демо-режим: черновик сохранен');">Сохранить черновик</button>
@@ -269,7 +193,6 @@
             </form>
         </div>
 
-        <!-- Подсказки по оформлению -->
         <div class="tips-card">
             <h3>📝 Советы по оформлению</h3>
             <ul>
@@ -288,42 +211,31 @@
     </footer>
 
     <script>
-        // Выпадающее меню по клику
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');
-            
             if (menuBtn && menuDropdown) {
                 menuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menuDropdown.classList.toggle('show');
                 });
-                
                 document.addEventListener('click', function(e) {
                     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
                         menuDropdown.classList.remove('show');
                     }
                 });
-                
                 menuDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
-            
-            // Показываем подкатегории для выбранной категории
             showSubcategories();
         });
 
-        // Функция для отображения подкатегорий в зависимости от выбранной категории
         function showSubcategories() {
             const category = document.getElementById('category').value;
-            
-            // Скрываем все группы подкатегорий
             document.getElementById('subcategory-recipes').style.display = 'none';
             document.getElementById('subcategory-discussions').style.display = 'none';
             document.getElementById('subcategory-qa').style.display = 'none';
-            
-            // Показываем нужную группу
             if (category === 'recipes') {
                 document.getElementById('subcategory-recipes').style.display = 'block';
             } else if (category === 'discussions') {
@@ -333,13 +245,10 @@
             }
         }
 
-        // Функция добавления тега
         function addTag(tagName) {
             const tagsInput = document.getElementById('tags');
             let currentTags = tagsInput.value;
-            
             tagName = tagName.replace('#', '');
-            
             if (currentTags) {
                 const tags = currentTags.split(',').map(t => t.trim());
                 if (!tags.includes(tagName)) {
@@ -350,7 +259,6 @@
             }
         }
 
-        // Функция для отображения выбранных данных (демо)
         function showSelectedData() {
             const category = document.getElementById('category').value;
             const categoryNames = {
@@ -358,24 +266,19 @@
                 'discussions': '🍷 Обсуждения',
                 'qa': '❓ Вопрос-ответ'
             };
-            
             let subcategory = '';
             const selectedSubcategory = document.querySelector('input[name="subcategory"]:checked');
             if (selectedSubcategory) {
-                const subcategoryId = selectedSubcategory.value;
                 const subcategoryLabel = document.querySelector(`label[for="${selectedSubcategory.id}"]`).textContent;
                 subcategory = `\nПодкатегория: ${subcategoryLabel}`;
             }
-            
             alert(`Демо-режим: форма не отправляется\n\nВыбрано:\nКатегория: ${categoryNames[category] || 'не выбрана'}${subcategory}`);
         }
 
-        // Обновление кнопки авторизации
         function updateAuthButton() {
             const authBtn = document.getElementById('authBtn');
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             const username = localStorage.getItem('username') || 'Елена_повар';
-
             if (isLoggedIn) {
                 authBtn.innerHTML = `<span class="user-avatar">${username.charAt(0)}</span> ${username}`;
                 authBtn.href = 'profile.html';
@@ -386,7 +289,6 @@
                 authBtn.classList.remove('user-profile-btn');
             }
         }
-
         updateAuthButton();
     </script>
 </body>
