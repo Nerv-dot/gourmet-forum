@@ -1,0 +1,1132 @@
+/* ===== ОСНОВНЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f5f0;
+    color: #2c3e50;
+    line-height: 1.6;
+    position: relative;
+    margin: 0;
+    background-image: url("images/Фон форум.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* необязательно, но красиво */
+}
+
+body::before {
+    content: "";
+    position: fixed; /* важно — покрывает весь экран */
+    inset: 0;
+    background-image: url("images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* отправляет фон назад */
+}
+
+/* затемнение */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* регулируешь яркость */
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+/* ===== ФИКСИРОВАННАЯ ШАПКА ===== */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 15px 0;
+    border-bottom: 3px solid #e67e22;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Логотип слева */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* расстояние между логотипом и текстом */
+    padding-left: 35px;          /* Ширина картинки + отступ */
+    background-image: url('images/logo.jpg'); /* Путь к картинке */
+    background-size: contain;    /* Чтобы картинка не растягивалась */
+    background-repeat: no-repeat;
+    background-position: left center; /* Выравнивание по левому краю по центру */
+    line-height: 30px;            /* Высота строки, чтобы текст был по центру картинки */
+    height: 30px;                 /* Явная высота */
+    font-size: 24px;
+    color: #e67e22;
+    text-decoration: none;
+    
+}
+
+.logo img {
+    display: block;
+
+}
+
+.logo span {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Навигация по центру */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-link {
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: all 0.2s;
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background: #f0f0f0;
+    color: #e67e22;
+}
+
+.nav-link.active {
+    background: #e67e22;
+    color: white;
+}
+
+
+/* Выпадающее меню ПО КЛИКУ */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 600px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.dropdown-content.show {
+    display: grid;
+}
+
+.dropdown-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dropdown-section-title {
+    font-weight: bold;
+    color: #e67e22;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e67e22;
+    margin-bottom: 5px;
+}
+
+.dropdown-section a {
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.dropdown-section a:hover {
+    color: #e67e22;
+    padding-left: 5px;
+}
+
+/* Кнопка входа/профиля справа */
+.auth-section {
+    margin-left: auto;
+}
+
+.auth-btn {
+    background: #e67e22;
+    color: white;
+    text-decoration: none;
+    padding: 8px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.2s;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.auth-btn:hover {
+    background: #d35400;
+}
+
+/* Стили для кнопки профиля пользователя */
+.user-profile-btn {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    background: #f0f0f0 !important;
+    color: #2c3e50 !important;
+    padding: 4px 4px 4px 12px !important;
+    border-radius: 30px !important;
+    transition: all 0.2s;
+}
+
+.user-profile-btn:hover {
+    background: #e0e0e0 !important;
+    color: #e67e22 !important;
+}
+
+.user-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #e67e22;
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ===== ПОДВАЛ (прижат к низу) ===== */
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: 40px;
+}
+
+/* ===== СТИЛИ ДЛЯ ПРОФИЛЯ ===== */
+.profile-header {
+    background: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    margin: 40px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    border-left: 5px solid #e67e22;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+    border-bottom: none;
+    color: #2c3e50;
+}
+
+.profile-info .meta {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: #f8f5f0;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e67e22;
+    display: block;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* Вкладки профиля */
+.profile-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 30px 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.tab {
+    padding: 10px 25px;
+    background: #f0f0f0;
+    color: #2c3e50;
+    border-radius: 5px 5px 0 0;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.tab:hover {
+    background: #e0e0e0;
+}
+
+.tab.active {
+    background: #e67e22;
+    color: white;
+}
+
+/* Карточки постов */
+.post-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    border: 1px solid #eee;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+.post-title {
+    font-size: 20px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-title:hover {
+    color: #e67e22;
+}
+
+.post-status {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 15px;
+    background: #f0f0f0;
+}
+
+.status-published {
+    color: #27ae60;
+    background: #e8f5e9;
+}
+
+.status-draft {
+    color: #f39c12;
+    background: #fff3e0;
+}
+
+.post-meta {
+    display: flex;
+    gap: 20px;
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.post-excerpt {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.post-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.tag:hover {
+    background: #e67e22;
+    color: white;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.post-stats {
+    display: flex;
+    gap: 20px;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.post-actions a {
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.post-actions a:hover {
+    color: #e67e22;
+}
+
+/* Комментарии в профиле */
+.comment-item {
+    background: #f9f9f9;
+    border-left: 3px solid #e67e22;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 0 10px 10px 0;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.comment-post-link {
+    color: #e67e22;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.comment-body {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-likes {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.comment-actions a {
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+/* Кнопка редактирования профиля */
+.btn-edit {
+    display: inline-block;
+    background: #95a5a6;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.btn-edit:hover {
+    background: #7f8c8d;
+}
+
+/* ===== СТИЛИ ДЛЯ РЕКЛАМНОГО ТЕКСТА ===== */
+.hero-section {
+    background: linear-gradient(135deg, #fff 0%, #f8f5f0 100%);
+    border-radius: 10px;
+    padding: 40px;
+    margin: 40px 0;
+    border-left: 5px solid #e67e22;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.hero-title {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero-title span {
+    color: #e67e22;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 5px;
+}
+
+.hero-content {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #34495e;
+}
+
+.hero-content p {
+    margin-bottom: 20px;
+}
+
+.hero-quote {
+    font-style: italic;
+    font-size: 20px;
+    color: #e67e22;
+    border-left: 3px solid #e67e22;
+    margin: 30px 0;
+    background: rgba(230, 126, 34, 0.05);
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+.hero-cta {
+    display: inline-block;
+    background: #e67e22;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
+    background: #d35400;
+}
+
+.stats-badge {
+    display: inline-block;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #e67e22;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.echo-phrase {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 28px;
+    color: #ffbc03;
+    font-weight: bold;
+    border-top: 2px solid #e67e22;
+    padding-top: 20px;
+    background: #f9f0b542;
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+}
+
+/* ===== СТИЛИ ДЛЯ СТРАНИЦЫ "О ПРОЕКТЕ" ===== */
+.about-section {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.about-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 3px solid #e67e22;
+}
+
+.about-card h2 {
+    margin-bottom: 15px;
+    color: #e67e22;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+}
+
+.about-quote {
+    font-style: italic;
+    font-size: 20px;
+    color: #f7f0d2;
+    text-align: center;
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(223, 114, 20, 0.822);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border-left: 3px solid #e67e22;
+}
+
+/* ===== СТИЛИ ДЛЯ ФОРМЫ НОВОГО ПОСТА ===== */
+.new-post-form {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #e67e22;
+}
+
+.required-star {
+    color: #e67e22;
+}
+
+.hint {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+.popular-tags {
+    margin-bottom: 20px;
+}
+
+.popular-tags span {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-right: 10px;
+}
+
+.tag-link {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 5px;
+    color: #2c3e50;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tag-link:hover {
+    background: #e67e22;
+    color: white;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    background: #e67e22;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #d35400;
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+.tips-card {
+    background: #f8f5f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.tips-card h3 {
+    color: #e67e22;
+    margin-bottom: 15px;
+}
+
+.tips-card ul {
+    margin-left: 20px;
+    line-height: 1.8;
+}
+
+/* ===== СТИЛИ ДЛЯ СПИСКА ТЕМ ===== */
+.sort-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.sort-btn {
+    background: #95a5a6;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.sort-btn:hover {
+    background: #7f8c8d;
+}
+
+.sort-btn.active {
+    background: #e67e22;
+}
+
+.status-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    color: #7f8c8d;
+}
+
+.filter-radio {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.page-link {
+    padding: 8px 12px;
+    background: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #2c3e50;
+    border: 1px solid #ddd;
+}
+
+.page-link.active {
+    background: #e67e22;
+    color: white;
+    border: none;
+}
+
+/* Пост в списке */
+.post-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    border: 1px solid #eee;
+}
+
+.post-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.post-title-link {
+    font-size: 20px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-title-link:hover {
+    color: #e67e22;
+}
+
+/* ===== СТИЛИ ДЛЯ ПРОСМОТРА ПОСТА ===== */
+.post-container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.post-title-main {
+    font-size: 32px;
+    margin-bottom: 0;
+    color: #2c3e50;
+}
+
+.post-info {
+    display: flex;
+    justify-content: space-between;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.post-content {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.post-content h3 {
+    margin: 20px 0 10px;
+    color: #e67e22;
+}
+
+.post-content ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.action-btn {
+    background: #95a5a6;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.action-btn:hover {
+    background: #7f8c8d;
+}
+
+/* Комментарии */
+.comments-section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.comments-list {
+    margin-top: 20px;
+}
+
+/* Похожие посты */
+.related-posts {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.related-item {
+    background: #f8f5f0;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.related-title {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.related-title:hover {
+    color: #e67e22;
+}
+
+.related-meta {
+    display: flex;
+    gap: 10px;
+    color: #7f8c8d;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    body {
+        padding-top: 120px; /* Больше отступ для мобильных */
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-nav {
+        position: static;
+        transform: none;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .dropdown-content {
+        min-width: 100%;
+        grid-template-columns: 1fr;
+        position: absolute;
+        left: 0;
+    }
+    
+    .auth-section {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .auth-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .profile-stats {
+        justify-content: center;
+    }
+    
+    .profile-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .tab {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .hero-section {
+        padding: 25px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .post-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 150px; /* Ещё больше для маленьких экранов */
+    }
+    
+    .main-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .dropdown-content {
+        position: static;
+    }
+    
+    .profile-header {
+        padding: 20px;
+    }
+    
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 40px;
+    }
+    
+    .profile-info h1 {
+        font-size: 28px;
+    }
+    
+    .stat-card {
+        width: 100%;
+    }
+    
+    .hero-section {
+        padding: 20px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .hero-cta {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+    }
+    
+    .btn, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
