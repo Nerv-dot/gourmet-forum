@@ -10,12 +10,39 @@ body {
     background-color: #f8f5f0;
     color: #2c3e50;
     line-height: 1.6;
+    position: relative;
+    margin: 0;
+    background-image: url("images/Фон форум.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* необязательно, но красиво */
+}
+
+body::before {
+    content: "";
+    position: fixed; /* важно — покрывает весь экран */
+    inset: 0;
+    background-image: url("images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* отправляет фон назад */
+}
+
+/* затемнение */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* регулируешь яркость */
+    z-index: -1;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    
 }
 
 /* ===== ШАПКА ===== */
@@ -35,7 +62,9 @@ header {
 
 /* Логотип слева */
 .logo {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* расстояние между логотипом и текстом */
     padding-left: 35px;          /* Ширина картинки + отступ */
     background-image: url('images/logo-icon.png'); /* Путь к картинке */
     background-size: contain;    /* Чтобы картинка не растягивалась */
@@ -46,6 +75,17 @@ header {
     font-size: 24px;
     color: #e67e22;
     text-decoration: none;
+    
+}
+
+.logo img {
+    display: block;
+
+}
+
+.logo span {
+    font-size: 28px;
+    font-weight: bold;
 }
 
 /* Навигация по центру */
@@ -549,11 +589,14 @@ header {
 .echo-phrase {
     text-align: center;
     margin-top: 30px;
-    font-size: 22px;
-    color: #e67e22;
+    font-size: 28px;
+    color: #ffbc03;
     font-weight: bold;
     border-top: 2px solid #e67e22;
     padding-top: 20px;
+    background: #f9f0b542;
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
 }
 
 /* ===== СТИЛИ ДЛЯ СТРАНИЦЫ "О ПРОЕКТЕ" ===== */
@@ -581,11 +624,12 @@ header {
 .about-quote {
     font-style: italic;
     font-size: 20px;
-    color: #e67e22;
+    color: #f7f0d2;
     text-align: center;
     margin: 40px 0;
     padding: 30px;
-    background: rgba(230, 126, 34, 0.05);
+    background: rgba(223, 114, 20, 0.822);
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     border-left: 3px solid #e67e22;
 }
