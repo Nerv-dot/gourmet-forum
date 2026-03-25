@@ -148,9 +148,6 @@ header {
     color: white;
 }
 
-.nav-link.active:hover {
-    background: #d35400;
-}
 
 /* Выпадающее меню ПО КЛИКУ */
 .dropdown {
