@@ -5,11 +5,21 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f5f0;
     color: #2c3e50;
     line-height: 1.6;
+<<<<<<< HEAD
     position: relative;
     margin: 0;
     background-image: url("images/Фон форум.jpg");
@@ -36,21 +46,38 @@ body::after {
     inset: 0;
     background: rgba(0, 0, 0, 0.4); /* регулируешь яркость */
     z-index: -1;
+=======
+    padding-top: 80px; /* Отступ для фиксированной шапки */
+>>>>>>> 7c52803a4be4d2e4cc1117bdf971df9a97c0b365
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+<<<<<<< HEAD
     
+=======
+    width: 100%;
+>>>>>>> 7c52803a4be4d2e4cc1117bdf971df9a97c0b365
 }
 
-/* ===== ШАПКА ===== */
+main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+/* ===== ФИКСИРОВАННАЯ ШАПКА ===== */
 header {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     padding: 15px 0;
     border-bottom: 3px solid #e67e22;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .header-content {
@@ -66,7 +93,7 @@ header {
     align-items: center;
     gap: 8px; /* расстояние между логотипом и текстом */
     padding-left: 35px;          /* Ширина картинки + отступ */
-    background-image: url('images/logo-icon.png'); /* Путь к картинке */
+    background-image: url('images/logo.jpg'); /* Путь к картинке */
     background-size: contain;    /* Чтобы картинка не растягивалась */
     background-repeat: no-repeat;
     background-position: left center; /* Выравнивание по левому краю по центру */
@@ -230,6 +257,17 @@ header {
     border-radius: 50%;
     font-size: 16px;
     font-weight: bold;
+}
+
+/* ===== ПОДВАЛ (прижат к низу) ===== */
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: 40px;
 }
 
 /* ===== СТИЛИ ДЛЯ ПРОФИЛЯ ===== */
@@ -968,17 +1006,12 @@ header {
     margin-top: 10px;
 }
 
-/* ===== ПОДВАЛ ===== */
-footer {
-    background: #2c3e50;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-}
-
 /* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 768px) {
+    body {
+        padding-top: 120px; /* Больше отступ для мобильных */
+    }
+    
     .header-content {
         flex-direction: column;
         gap: 15px;
@@ -1050,6 +1083,10 @@ footer {
 }
 
 @media (max-width: 480px) {
+    body {
+        padding-top: 150px; /* Ещё больше для маленьких экранов */
+    }
+    
     .main-nav {
         flex-direction: column;
         width: 100%;
