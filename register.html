@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход - Форум гурманов</title>
+    <title>Регистрация - Форум гурманов</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -59,12 +59,9 @@
 
     <main class="container">
         <div class="login-container">
-            <h1 class="text-center">Добро пожаловать!</h1>
-            <div class="tabs-container">
-                <a href="login.html" id="loginTab" class="tab-login active">Вход</a>
-                <a href="register.html" id="registerTab" class="tab-register">Регистрация</a>
-            </div>
-            <div id="registerForm" class="card" style="display: none;">
+            <h1 class="text-center">Регистрация</h1>
+            
+            <div class="form-container">
                 <form id="registerFormElement">
                     <div class="form-group">
                         <label for="reg-name">Имя пользователя</label>
@@ -80,6 +77,11 @@
                     </div>
                     <button type="submit" class="btn btn-block">Зарегистрироваться</button>
                 </form>
+                
+                <div class="login-link text-center mt-30">
+                    <p>Уже есть аккаунт? <a href="login.html" class="login-link-btn">Войти</a></p>
+                </div>
+                
                 <div class="text-center mt-20">
                     <small class="text-muted">Регистрируясь, вы соглашаетесь с правилами форума.</small>
                 </div>
@@ -113,65 +115,22 @@
             }
         });
 
-        const loginTab = document.getElementById('loginTab');
-        const registerTab = document.getElementById('registerTab');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const urlParams = new URLSearchParams(window.location.search);
-        const tabParam = urlParams.get('tab');
-
-        if (tabParam === 'register') {
-            setTimeout(() => {
-                registerTab.classList.add('active');
-                loginTab.classList.remove('active');
-                registerForm.style.display = 'block';
-                loginForm.style.display = 'none';
-            }, 100);
-        }
-
-        loginTab.addEventListener('click', function(e) {
-            e.preventDefault();
-            loginTab.classList.add('active');
-            registerTab.classList.remove('active');
-            loginForm.style.display = 'block';
-            registerForm.style.display = 'none';
-        });
-
-        registerTab.addEventListener('click', function(e) {
-            e.preventDefault();
-            registerTab.classList.add('active');
-            loginTab.classList.remove('active');
-            registerForm.style.display = 'block';
-            loginForm.style.display = 'none';
-        });
-
-        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            if (email && password) {
-                localStorage.setItem('userLoggedIn', 'true');
-                localStorage.setItem('username', email.split('@')[0] || 'Пользователь');
-                alert('Добро пожаловать!');
-                window.location.href = 'index.html';
-            } else {
-                alert('Заполните все поля');
-            }
-        });
-
         document.getElementById('registerFormElement').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('reg-name').value;
             const password = document.getElementById('reg-password').value;
             const password2 = document.getElementById('reg-password2').value;
+            
             if (!name || !password || !password2) {
                 alert('Заполните все поля');
                 return;
             }
+            
             if (password !== password2) {
                 alert('Пароли не совпадают');
                 return;
             }
+            
             localStorage.setItem('userLoggedIn', 'true');
             localStorage.setItem('username', name);
             alert('Регистрация успешна!');

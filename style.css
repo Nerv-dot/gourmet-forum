@@ -1101,53 +1101,45 @@ h3 {
 }
 
 /* ===== ДОПОЛНИТЕЛЬНЫЕ КЛАССЫ ДЛЯ ЗАМЕНЫ INLINE-СТИЛЕЙ ===== */
-
-/* Стили для страницы входа */
+/* ===== СТИЛИ ДЛЯ СТРАНИЦ ВХОДА И РЕГИСТРАЦИИ ===== */
 .login-container {
     max-width: 400px;
     margin: 40px auto;
 }
 
-.tabs-container {
-    display: flex;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #eee;
+.form-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.tab-login {
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-    background: #f0f0f0;
+/* Текст внутри светлой карточки — темный */
+.form-container .form-group label {
     color: #2c3e50;
-    text-decoration: none;
-    border-radius: 5px 5px 0 0;
-    transition: all 0.2s;
-}
-.tab-login.active {
-    background: #e67e22;
-    color: #fff;
-}
-.tab-login:not(.active):hover {
-    background: #e0e0e0;
 }
 
-.tab-register {
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-    background: #f0f0f0;
+.form-container .register-link,
+.form-container .login-link {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.form-container .register-link p,
+.form-container .login-link p {
     color: #2c3e50;
+}
+
+.register-link-btn, 
+.login-link-btn {
+    color: #e67e22;
     text-decoration: none;
-    border-radius: 5px 5px 0 0;
-    transition: all 0.2s;
+    font-weight: bold;
 }
-.tab-register.active {
-    background: #e67e22;
-    color: #fff;
-}
-.tab-register:not(.active):hover {
-    background: #e0e0e0;
+
+.register-link-btn:hover, 
+.login-link-btn:hover {
+    text-decoration: underline;
 }
 
 .forgot-link {
@@ -1155,6 +1147,7 @@ h3 {
     font-size: 14px;
     text-decoration: none;
 }
+
 .forgot-link:hover {
     color: #e67e22;
 }
@@ -1163,7 +1156,6 @@ h3 {
     font-size: 14px;
     color: #7f8c8d;
 }
-
 /* Утилиты */
 .text-center {
     text-align: center;
