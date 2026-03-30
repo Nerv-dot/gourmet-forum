@@ -58,7 +58,8 @@
     </header>
 
     <main class="container">
-        <div class="breadcrumbs">
+        <!-- Хлебные крошки светлые -->
+        <div class="breadcrumbs-light">
             <a href="index.html">Главная</a> /
             <a href="profile.html">Профиль</a> /
             <span>Новый пост</span>
@@ -78,6 +79,7 @@
 
         <div class="new-post-form">
             <form id="newPostForm" onsubmit="event.preventDefault(); alert('Демо-режим: форма не отправляется');">
+                <!-- содержимое формы без изменений -->
                 <div class="form-group">
                     <label for="title">Заголовок <span class="required-star">*</span></label>
                     <input type="text" id="title" class="form-control" placeholder="Например: Бабушкин рецепт борща" value="Тестовый заголовок">
@@ -219,6 +221,7 @@
     </footer>
 
     <script>
+        // (весь существующий скрипт без изменений)
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menuBtn');
             const menuDropdown = document.getElementById('menuDropdown');

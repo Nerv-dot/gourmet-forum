@@ -1102,19 +1102,6 @@ h3 {
 
 /* ===== ДОПОЛНИТЕЛЬНЫЕ КЛАССЫ ДЛЯ ЗАМЕНЫ INLINE-СТИЛЕЙ ===== */
 
-/* Хлебные крошки */
-.breadcrumbs {
-    margin-bottom: 20px;
-    color: #7f8c8d;
-}
-.breadcrumbs a {
-    color: #7f8c8d;
-    text-decoration: none;
-}
-.breadcrumbs a:hover {
-    color: #e67e22;
-}
-
 /* Стили для страницы входа */
 .login-container {
     max-width: 400px;
@@ -1692,5 +1679,103 @@ h3 {
     .btn, .btn-secondary {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* Хлебные крошки светлые */
+.breadcrumbs-light {
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+.breadcrumbs-light a {
+    color: #e67e22;
+    text-decoration: none;
+}
+.breadcrumbs-light a:hover {
+    color: #f39c12;
+}
+.breadcrumbs-light span {
+    color: #cccccc;
+}
+
+/* Заголовок с количеством постов */
+.topics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.topics-title {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.topics-title h1 {
+    margin-bottom: 0;
+    font-size: 32px;
+}
+
+.posts-count-header {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.posts-count-small {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.posts-count-header .posts-count-label {
+    font-size: 14px;
+    color: #cccccc;
+}
+
+/* Описание категории */
+.category-description {
+    margin-bottom: 25px;
+    padding: 10px 0;
+    color: #cccccc;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.category-description p {
+    margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .topics-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .topics-title h1 {
+        font-size: 28px;
+    }
+    
+    .posts-count-header {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .topics-title h1 {
+        font-size: 24px;
+    }
+    
+    .category-description {
+        font-size: 14px;
     }
 }

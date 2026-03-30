@@ -58,27 +58,27 @@
     </header>
 
     <main class="container">
-        <div class="breadcrumbs">
+        <!-- Хлебные крошки (светлые) -->
+        <div class="breadcrumbs-light">
             <a href="index.html">Главная</a> /
             <span id="categoryName">Рецепты</span>
         </div>
 
-        <div class="card category-info">
-            <div class="category-header">
-                <div>
-                    <h2 id="categoryTitle">🍲 Рецепты</h2>
-                    <p id="categoryDescription">Делимся проверенными рецептами, спрашиваем советы, обсуждаем ингредиенты.</p>
-                </div>
-                <div class="category-stats">
-                    <div class="posts-count" id="postsCount">15</div>
-                    <div class="posts-count-label">постов</div>
+        <!-- Заголовок и кнопка создания поста + количество постов -->
+        <div class="topics-header">
+            <div class="topics-title">
+                <h1>Все посты в разделе</h1>
+                <div class="posts-count-header">
+                    <span class="posts-count-small" id="postsCount">15</span>
+                    <span class="posts-count-label">постов</span>
                 </div>
             </div>
+            <a href="new_topic.html" class="btn">➕ Новый пост</a>
         </div>
 
-        <div class="topics-header">
-            <h1>Все посты в разделе</h1>
-            <a href="new_topic.html" class="btn">➕ Новый пост</a>
+        <!-- Описание категории (короткое, без дублирования) -->
+        <div class="category-description">
+            <p id="categoryDescription">Делимся проверенными рецептами, спрашиваем советы, обсуждаем ингредиенты.</p>
         </div>
 
         <div class="sort-buttons">
@@ -173,7 +173,6 @@
 
         function loadCategoryInfo() {
             document.getElementById('categoryName').textContent = currentCategory.name;
-            document.getElementById('categoryTitle').innerHTML = `🍲 ${currentCategory.name}`;
             document.getElementById('categoryDescription').textContent = currentCategory.description;
             document.getElementById('postsCount').textContent = currentCategory.postsCount;
         }
